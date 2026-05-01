@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="appointment_1" model="hr_hospital.appointment">
+        <field name="doctor_id" ref="doctor_2"/>
+        <field name="patient_id" ref="patient_1"/>
+        <field name="scheduled_datetime">2026-02-01 10:00:00</field>
+        <field name="actual_datetime">2026-02-01 10:20:00</field>
+        <field name="state">done</field>
+        <field name="disease_id" ref="disease_i10"/>
+    </record>
+
+    <record id="appointment_2" model="hr_hospital.appointment">
+        <field name="doctor_id" ref="doctor_3"/>
+        <field name="patient_id" ref="patient_2"/>
+        <field name="scheduled_datetime">2026-02-02 11:00:00</field>
+        <field name="state">planned</field>
+        <field name="disease_id" ref="disease_a03"/>
+    </record>
+
+    <record id="appointment_3" model="hr_hospital.appointment">
+        <field name="doctor_id" ref="doctor_4"/>
+        <field name="patient_id" ref="patient_3"/>
+        <field name="scheduled_datetime">2026-02-03 09:00:00</field>
+        <field name="actual_datetime">2026-02-03 09:15:00</field>
+        <field name="state">done</field>
+        <field name="disease_id" ref="disease_e73"/>
+    </record>
+
+    <record id="appointment_4" model="hr_hospital.appointment">
+        <field name="doctor_id" ref="doctor_5"/>
+        <field name="patient_id" ref="patient_4"/>
+        <field name="scheduled_datetime">2026-02-04 14:00:00</field>
+        <field name="state">cancelled</field>
+        <field name="disease_id" ref="disease_a01"/>
+    </record>
+
+    <record id="appointment_5" model="hr_hospital.appointment">
+        <field name="doctor_id" ref="doctor_1"/>
+        <field name="patient_id" ref="patient_5"/>
+        <field name="scheduled_datetime">2026-02-05 12:00:00</field>
+        <field name="state">planned</field>
+        <field name="disease_id" ref="disease_i11"/>
+    </record>
+
+    <record id="appointment_6" model="hr_hospital.appointment">
+        <field name="doctor_id" ref="doctor_2"/>
+        <field name="patient_id" ref="patient_2"/>
+        <field name="scheduled_datetime">2026-02-06 16:00:00</field>
+        <field name="actual_datetime">2026-02-06 16:30:00</field>
+        <field name="state">done</field>
+        <field name="disease_id" ref="disease_a06"/>
+    </record>
+
+    <record id="appointment_march_1" model="hr_hospital.appointment">
+        <field name="doctor_id" ref="doctor_2"/>
+        <field name="patient_id" ref="patient_1"/>
+        <field name="scheduled_datetime">2026-03-03 09:00:00</field>
+        <field name="actual_datetime">2026-03-03 09:20:00</field>
+        <field name="state">done</field>
+        <field name="disease_id" ref="disease_i10"/>
+    </record>
+
+    <record id="appointment_march_2" model="hr_hospital.appointment">
+        <field name="doctor_id" ref="doctor_3"/>
+        <field name="patient_id" ref="patient_2"/>
+        <field name="scheduled_datetime">2026-03-05 11:00:00</field>
+        <field name="state">planned</field>
+        <field name="disease_id" ref="disease_a03"/>
+    </record>
+
+    <record id="appointment_march_3" model="hr_hospital.appointment">
+        <field name="doctor_id" ref="doctor_4"/>
+        <field name="patient_id" ref="patient_3"/>
+        <field name="scheduled_datetime">2026-03-07 14:00:00</field>
+        <field name="actual_datetime">2026-03-07 14:10:00</field>
+        <field name="state">done</field>
+        <field name="disease_id" ref="disease_e73"/>
+    </record>
+
+    <record id="appointment_march_4" model="hr_hospital.appointment">
+        <field name="doctor_id" ref="doctor_5"/>
+        <field name="patient_id" ref="patient_4"/>
+        <field name="scheduled_datetime">2026-03-10 10:30:00</field>
+        <field name="state">cancelled</field>
+        <field name="disease_id" ref="disease_a01"/>
+    </record>
+
+    <record id="appointment_march_5" model="hr_hospital.appointment">
+        <field name="doctor_id" ref="doctor_1"/>
+        <field name="patient_id" ref="patient_5"/>
+        <field name="scheduled_datetime">2026-03-15 13:00:00</field>
+        <field name="state">planned</field>
+        <field name="disease_id" ref="disease_i11"/>
+    </record>
+
+    <record id="appointment_march_6" model="hr_hospital.appointment">
+        <field name="doctor_id" ref="doctor_2"/>
+        <field name="patient_id" ref="patient_2"/>
+        <field name="scheduled_datetime">2026-03-20 16:00:00</field>
+        <field name="actual_datetime">2026-03-20 16:25:00</field>
+        <field name="state">done</field>
+        <field name="disease_id" ref="disease_a06"/>
+    </record>
+
+    <record id="appointment_april_1" model="hr_hospital.appointment">
+        <field name="doctor_id" ref="doctor_3"/>
+        <field name="patient_id" ref="patient_1"/>
+        <field name="scheduled_datetime">2026-04-02 09:00:00</field>
+        <field name="actual_datetime">2026-04-02 09:15:00</field>
+        <field name="state">done</field>
+        <field name="disease_id" ref="disease_i10"/>
+    </record>
+
+    <record id="appointment_april_2" model="hr_hospital.appointment">
+        <field name="doctor_id" ref="doctor_2"/>
+        <field name="patient_id" ref="patient_2"/>
+        <field name="scheduled_datetime">2026-04-05 11:30:00</field>
+        <field name="state">planned</field>
+        <field name="disease_id" ref="disease_a02"/>
+    </record>
+
+    <record id="appointment_april_3" model="hr_hospital.appointment">
+        <field name="doctor_id" ref="doctor_4"/>
+        <field name="patient_id" ref="patient_3"/>
+        <field name="scheduled_datetime">2026-04-08 14:00:00</field>
+        <field name="actual_datetime">2026-04-08 14:40:00</field>
+        <field name="state">done</field>
+        <field name="disease_id" ref="disease_e74"/>
+    </record>
+
+    <record id="appointment_april_4" model="hr_hospital.appointment">
+        <field name="doctor_id" ref="doctor_5"/>
+        <field name="patient_id" ref="patient_4"/>
+        <field name="scheduled_datetime">2026-04-12 10:00:00</field>
+        <field name="state">cancelled</field>
+        <field name="disease_id" ref="disease_a05"/>
+    </record>
+
+    <record id="appointment_april_5" model="hr_hospital.appointment">
+        <field name="doctor_id" ref="doctor_1"/>
+        <field name="patient_id" ref="patient_5"/>
+        <field name="scheduled_datetime">2026-04-18 13:30:00</field>
+        <field name="state">planned</field>
+        <field name="disease_id" ref="disease_i12"/>
+    </record>
+
+    <record id="appointment_april_6" model="hr_hospital.appointment">
+        <field name="doctor_id" ref="doctor_2"/>
+        <field name="patient_id" ref="patient_1"/>
+        <field name="scheduled_datetime">2026-04-25 16:00:00</field>
+        <field name="actual_datetime">2026-04-25 16:20:00</field>
+        <field name="state">done</field>
+        <field name="disease_id" ref="disease_a06"/>
+    </record>
+
+</odoo>

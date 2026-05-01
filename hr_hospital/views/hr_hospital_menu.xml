@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="hr_hospital_main_menu"
+              name="HR Hospital"
+              sequence="10"/>
+
+    <menuitem id="hr_hospital_menu_patients"
+              name="Patients"
+              parent="hr_hospital_main_menu"
+              action="hr_hospital.hr_hospital_patient_action_window"
+              sequence="10"/>
+
+    <menuitem id="hr_hospital_menu_doctors"
+              name="Doctors"
+              parent="hr_hospital_main_menu"
+              action="hr_hospital.hr_hospital_doctor_action_window"
+              sequence="20"/>
+
+    <menuitem id="hr_hospital_menu_appointment"
+              name="Appointments"
+              parent="hr_hospital_main_menu"
+              action="hr_hospital.hr_hospital_appointment_action_window"
+              sequence="30"/>
+
+
+    <menuitem id="hr_hospital_menu_dictionary"
+              name="Dictionaries"
+              parent="hr_hospital_main_menu"
+              sequence="40"/>
+
+    <menuitem id="hr_hospital_menu_doctor_category"
+              name="Doctor Category"
+              parent="hr_hospital_menu_dictionary"
+              action="hr_hospital.hr_hospital_doctor_category_action_window"
+              sequence="10"/>
+
+    <menuitem id="hr_hospital_menu_doctor_diseases"
+              name="ICD Diseases"
+              parent="hr_hospital_menu_dictionary"
+              action="hr_hospital.hr_hospital_disease_action_window"
+              sequence="20"/>
+
+</odoo>

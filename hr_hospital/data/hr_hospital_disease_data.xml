@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <!-- PARENTS -->
+    <record id="disease_a00_a09" model="hr_hospital.disease">
+        <field name="icd_code">A00-A09</field>
+        <field name="name">Кишкові інфекційні хвороби</field>
+    </record>
+
+    <record id="disease_a80_a89" model="hr_hospital.disease">
+        <field name="icd_code">A80-A89</field>
+        <field name="name">Вірусні інфекційні хвороби центральної нервової системи</field>
+    </record>
+
+    <record id="disease_e70_e89" model="hr_hospital.disease">
+        <field name="icd_code">E70-E89</field>
+        <field name="name">Порушення обміну речовин</field>
+    </record>
+
+    <record id="disease_i10_i15" model="hr_hospital.disease">
+        <field name="icd_code">I10-I15</field>
+        <field name="name">Гіпертонічна хвороба</field>
+    </record>
+
+    <!-- A00-A09 -->
+
+    <record id="disease_a00" model="hr_hospital.disease">
+        <field name="icd_code">A00</field>
+        <field name="name">Холера</field>
+        <field name="parent_id" ref="disease_a00_a09"/>
+    </record>
+
+    <record id="disease_a01" model="hr_hospital.disease">
+        <field name="icd_code">A01</field>
+        <field name="name">Черевний тиф та паратиф</field>
+        <field name="parent_id" ref="disease_a00_a09"/>
+    </record>
+
+    <record id="disease_a02" model="hr_hospital.disease">
+        <field name="icd_code">A02</field>
+        <field name="name">Інші сальмонельозні інфекції</field>
+        <field name="parent_id" ref="disease_a00_a09"/>
+    </record>
+
+    <record id="disease_a03" model="hr_hospital.disease">
+        <field name="icd_code">A03</field>
+        <field name="name">Шигельоз</field>
+        <field name="parent_id" ref="disease_a00_a09"/>
+    </record>
+
+    <record id="disease_a04" model="hr_hospital.disease">
+        <field name="icd_code">A04</field>
+        <field name="name">Інші бактеріальні кишкові інфекції</field>
+        <field name="parent_id" ref="disease_a00_a09"/>
+    </record>
+
+    <record id="disease_a05" model="hr_hospital.disease">
+        <field name="icd_code">A05</field>
+        <field name="name">Інші бактеріальні харчові отруєння, не класифіковані в інших рубриках</field>
+        <field name="parent_id" ref="disease_a00_a09"/>
+    </record>
+
+    <record id="disease_a06" model="hr_hospital.disease">
+        <field name="icd_code">A06</field>
+        <field name="name">Амебіаз</field>
+        <field name="parent_id" ref="disease_a00_a09"/>
+    </record>
+
+    <!-- A80-A89 -->
+
+    <record id="disease_a80" model="hr_hospital.disease">
+        <field name="icd_code">A80</field>
+        <field name="name">Гострий поліомієліт</field>
+        <field name="parent_id" ref="disease_a80_a89"/>
+    </record>
+
+    <record id="disease_a81" model="hr_hospital.disease">
+        <field name="icd_code">A81</field>
+        <field name="name">Повільні вірусні інфекції центральної нервової системи</field>
+        <field name="parent_id" ref="disease_a80_a89"/>
+    </record>
+
+    <record id="disease_a82" model="hr_hospital.disease">
+        <field name="icd_code">A82</field>
+        <field name="name">Сказ</field>
+        <field name="parent_id" ref="disease_a80_a89"/>
+    </record>
+
+    <record id="disease_a83" model="hr_hospital.disease">
+        <field name="icd_code">A83</field>
+        <field name="name">Комариний вірусний енцефаліт</field>
+        <field name="parent_id" ref="disease_a80_a89"/>
+    </record>
+
+    <record id="disease_a84" model="hr_hospital.disease">
+        <field name="icd_code">A84</field>
+        <field name="name">Кліщовий вірусний енцефаліт</field>
+        <field name="parent_id" ref="disease_a80_a89"/>
+    </record>
+
+    <!-- E70-E89 -->
+
+    <record id="disease_e70" model="hr_hospital.disease">
+        <field name="icd_code">E70</field>
+        <field name="name">Порушення обміну ароматичних амінокислот</field>
+        <field name="parent_id" ref="disease_e70_e89"/>
+    </record>
+
+    <record id="disease_e71" model="hr_hospital.disease">
+        <field name="icd_code">E71</field>
+        <field name="name">Порушення обміну амінокислот з розгалуженим ланцюгом та порушення обміну жирних кислот</field>
+        <field name="parent_id" ref="disease_e70_e89"/>
+    </record>
+
+    <record id="disease_e72" model="hr_hospital.disease">
+        <field name="icd_code">E72</field>
+        <field name="name">Інші порушення обміну амінокислот</field>
+        <field name="parent_id" ref="disease_e70_e89"/>
+    </record>
+
+    <record id="disease_e73" model="hr_hospital.disease">
+        <field name="icd_code">E73</field>
+        <field name="name">Непереносимість лактози</field>
+        <field name="parent_id" ref="disease_e70_e89"/>
+    </record>
+
+    <record id="disease_e74" model="hr_hospital.disease">
+        <field name="icd_code">E74</field>
+        <field name="name">Інші порушення обміну вуглеводів</field>
+        <field name="parent_id" ref="disease_e70_e89"/>
+    </record>
+
+    <record id="disease_e75" model="hr_hospital.disease">
+        <field name="icd_code">E75</field>
+        <field name="name">Порушення обміну сфінголіпідів та інші розлади накопичення ліпідів</field>
+        <field name="parent_id" ref="disease_e70_e89"/>
+    </record>
+
+    <record id="disease_e76" model="hr_hospital.disease">
+        <field name="icd_code">E76</field>
+        <field name="name">Порушення обміну глікозаміногліканів</field>
+        <field name="parent_id" ref="disease_e70_e89"/>
+    </record>
+
+    <!-- I10-I15 -->
+
+    <record id="disease_i10" model="hr_hospital.disease">
+        <field name="icd_code">I10</field>
+        <field name="name">Есенціальна (первинна) артеріальна гіпертензія</field>
+        <field name="parent_id" ref="disease_i10_i15"/>
+    </record>
+
+    <record id="disease_i11" model="hr_hospital.disease">
+        <field name="icd_code">I11</field>
+        <field name="name">Гіпертензивна хвороба серця</field>
+        <field name="parent_id" ref="disease_i10_i15"/>
+    </record>
+
+    <record id="disease_i12" model="hr_hospital.disease">
+        <field name="icd_code">I12</field>
+        <field name="name">Гіпертензивна хвороба з ураженням нирок</field>
+        <field name="parent_id" ref="disease_i10_i15"/>
+    </record>
+
+    <record id="disease_i13" model="hr_hospital.disease">
+        <field name="icd_code">I13</field>
+        <field name="name">Гіпертензивна хвороба з ураженням серця та нирок</field>
+        <field name="parent_id" ref="disease_i10_i15"/>
+    </record>
+
+    <record id="disease_i15" model="hr_hospital.disease">
+        <field name="icd_code">I15</field>
+        <field name="name">Вторинна артеріальна гіпертензія</field>
+        <field name="parent_id" ref="disease_i10_i15"/>
+    </record>
+
+</odoo>

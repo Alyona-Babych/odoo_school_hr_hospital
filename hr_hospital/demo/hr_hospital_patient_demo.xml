@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="patient_1" model="hr_hospital.patient">
+        <field name="name">Олена Коваль</field>
+        <field name="phone">+380501112233</field>
+        <field name="email">olena.koval@example.com</field>
+        <field name="birth_date">1990-05-14</field>
+        <field name="gender">female</field>
+        <field name="blood_group">a</field>
+        <field name="rh_factor">positive</field>
+        <field name="policy_number">INS-10001</field>
+    </record>
+
+    <record id="patient_2" model="hr_hospital.patient">
+        <field name="name">Ігор Мельник</field>
+        <field name="phone">+380671234567</field>
+        <field name="email">igor.melnyk@example.com</field>
+        <field name="birth_date">1985-09-02</field>
+        <field name="gender">male</field>
+        <field name="blood_group">o</field>
+        <field name="rh_factor">positive</field>
+        <field name="policy_number">INS-10002</field>
+    </record>
+
+    <record id="patient_3" model="hr_hospital.patient">
+        <field name="name">Марія Шевченко</field>
+        <field name="phone">+380931234111</field>
+        <field name="email">maria.shevchenko@example.com</field>
+        <field name="birth_date">1995-11-20</field>
+        <field name="gender">female</field>
+        <field name="blood_group">b</field>
+        <field name="rh_factor">negative</field>
+        <field name="policy_number">INS-10003</field>
+    </record>
+
+    <record id="patient_4" model="hr_hospital.patient">
+        <field name="name">Андрій Бондар</field>
+        <field name="phone">+380661112244</field>
+        <field name="email">andrii.bondar@example.com</field>
+        <field name="birth_date">1978-03-10</field>
+        <field name="gender">male</field>
+        <field name="blood_group">ab</field>
+        <field name="rh_factor">positive</field>
+        <field name="policy_number">INS-10004</field>
+    </record>
+
+    <record id="patient_5" model="hr_hospital.patient">
+        <field name="name">Наталія Романенко</field>
+        <field name="phone">+380501998877</field>
+        <field name="email">natalia.romanenko@example.com</field>
+        <field name="birth_date">2000-07-25</field>
+        <field name="gender">female</field>
+        <field name="blood_group">o</field>
+        <field name="rh_factor">negative</field>
+        <field name="policy_number">INS-10005</field>
+    </record>
+
+</odoo>
