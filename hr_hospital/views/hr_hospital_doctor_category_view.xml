@@ -25,7 +25,11 @@
                     </group>
                     <notebook>
                         <page string="Doctors">
-                            <field name="doctor_ids" readonly="1"/>
+                            <field name="doctor_ids" readonly="1">
+                                <list create="0" delete="0">
+                                    <field name="name"/>
+                                </list>
+                            </field>
                         </page>
                     </notebook>
                 </sheet>

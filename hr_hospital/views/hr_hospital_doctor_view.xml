@@ -51,8 +51,11 @@
 
                     <notebook>
                         <page string="Personal Patients">
-                            <field name="personal_patient_ids" readonly="1"/>
-                            <tree create="0" delete="0"/>
+                            <field name="personal_patient_ids" readonly="1">
+                                <list create="0" delete="0">
+                                    <field name="name"/>
+                                </list>
+                            </field>
                         </page>
                     </notebook>
                 </sheet>
