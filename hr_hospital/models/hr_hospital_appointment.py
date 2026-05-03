@@ -1,7 +1,7 @@
 import logging
 
 from odoo import api, models, fields
-from odoo.exceptions import ValidationError
+from odoo.exceptions import ValidationError, UserError
 
 from ..constants.appointment_constant import appointment_status
 
@@ -105,20 +105,24 @@ class HrHospitalAppointment(models.Model):
                 raise ValidationError('An appointment with the status "Done" must have an actual appointment date.')
 
 
+    def action_archive(self):
+        for appointment in self:
+            raise UserError('Archiving is not allowed for records in this table.')
+
+
     def write(self, vals):
         forbidden_fields = (
             'state',
             'scheduled_datetime',
             'actual_datetime',
             'doctor_id',
-            'active'
         )
         for appointment in self:
             if (
                     appointment.state == appointment_status.DONE[0] and
                     any(field in vals for field in forbidden_fields)
             ):
-                raise ValidationError('You cannot modify an appointment with the status "Done".')
+                raise UserError('You cannot modify an appointment with the status "Done".')
         
         return super().write(vals)
 
@@ -126,6 +130,6 @@ class HrHospitalAppointment(models.Model):
     def unlink(self):
         for appointment in self:
             if appointment.state == appointment_status.DONE[0]:
-                raise ValidationError('You cannot delete an appointment with the status "Done".')
+                raise UserError('You cannot delete an appointment with the status "Done".')
             
         return super().unlink()
