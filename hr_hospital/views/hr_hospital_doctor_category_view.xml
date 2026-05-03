@@ -29,6 +29,17 @@
                                 <list create="0" delete="0">
                                     <field name="name"/>
                                 </list>
+                                <form string="Doctor" create="0" edit="0" delete="0">
+                                    <sheet>
+                                        <group>
+                                            <field name="name"/>
+                                            <field name="specialization"/>
+                                            <field name="mentor_id"
+                                               domain="[('id', '!=', id), ('is_intern', '=', False)]"
+                                               invisible="not is_intern"/>
+                                        </group>
+                                    </sheet>
+                                </form>
                             </field>
                         </page>
                     </notebook>
