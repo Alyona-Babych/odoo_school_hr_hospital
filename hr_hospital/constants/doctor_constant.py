@@ -37,7 +37,7 @@ DoctorQualificationCategory = namedtuple(
 doctor_qualification_category = DoctorQualificationCategory(
     ('intern', 'Intern'),
     ('specialist', 'Specialist'),
-    ('first', 'first Category'),
+    ('first', 'First Category'),
     ('second', 'Second Category'),
     ('highest', 'Highest Category')
 )
