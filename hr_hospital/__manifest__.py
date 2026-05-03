@@ -2,6 +2,7 @@
     'name': 'HR Hospital',
     'summary': 'Hospital management system for doctors, patients, diseases, and visit tracking.',
     'author': 'Alyona Babych',
+    'website': 'https://odoo.school/',
     'category': 'Services',
     'license': 'LGPL-3',
     'version': '19.0.1.1.0',
@@ -9,10 +10,6 @@
     'depends': [
         'base',
     ],
-
-    'external_dependencies': {
-        'python': [],
-    },
 
     'data': [
 
