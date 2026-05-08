@@ -1,6 +1,5 @@
 from collections import namedtuple
 
-
 DoctorSpecialization = namedtuple(
     'DoctorSpecialization',
     (
@@ -18,7 +17,7 @@ doctor_specialization = DoctorSpecialization(
     ('pediatrician', 'Pediatrician'),
     ('cardiologist', 'Cardiologist'),
     ('neurologist', 'Neurologist'),
-    ('endocrinologist',  'Endocrinologist'),
+    ('endocrinologist', 'Endocrinologist'),
     ('gastroenterologist', 'Gastroenterologist'),
 )
 

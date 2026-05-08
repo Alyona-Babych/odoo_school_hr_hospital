@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='hr_hospital_disease_category_list' model='ir.ui.view'>
+        <field name='name'>hr_hospital.disease.category.list</field>
+        <field name='model'>hr_hospital.disease.category</field>
+        <field name='arch' type='xml'>
+            <list string='Category Diseases'>
+                <field name="display_name"/>
+            </list>
+        </field>
+    </record>
+
+    <record id='hr_hospital_disease_category_form' model='ir.ui.view'>
+        <field name='name'>hr_hospital.disease.category.form</field>
+        <field name='model'>hr_hospital.disease.category</field>
+        <field name='arch' type='xml'>
+            <form string="Category Disease">
+                <header>
+                    <button name="action_create_disease"
+                            type="object"
+                            string="Create Disease"
+                            class="btn-success"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button"
+                                type="object"
+                                name="action_open_disease"
+                                icon="fa-medkit">
+
+                            <field name="disease_count" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="icd_code"/>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="parent_id"/>
+                        </group>
+                    </group>
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_hospital_disease_category_search" model="ir.ui.view">
+        <field name="name">hr_hospital.disease.category.search</field>
+        <field name="model">hr_hospital.disease.category</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="icd_code"/>
+
+                <searchpanel>
+                    <field name="parent_id"
+                           hierarchy="1"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <record id='hr_hospital_disease_category_action_window' model='ir.actions.act_window'>
+        <field name='name'>Diseases</field>
+        <field name="res_model">hr_hospital.disease.category</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="hr_hospital_disease_category_search"/>
+    </record>
+
+</odoo>

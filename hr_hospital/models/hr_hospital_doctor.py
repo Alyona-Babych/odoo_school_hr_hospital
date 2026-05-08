@@ -1,10 +1,9 @@
 import logging
 
-from odoo import api, models, fields
+from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
 from ..constants.doctor_constant import doctor_qualification_category, doctor_specialization
-
 
 _logger = logging.getLogger(__name__)
 
@@ -17,22 +16,19 @@ class HrHospitalDoctorCategory(models.Model):
     name = fields.Char(
         required=True,
         string='Category',
-        help='Користувацька назва категорії лікаря (визначається лікарнею)'
+        help='Custom doctor category name (defined by hospital)'
     )
 
-    # Вычисляемое поле "Лікар є інтерном" (п.3.4) зависит от конкретного значения категории.
-    # Во избежание ошибок, связанных с произвольным вводом или изменения xml-id в data файлах категории интерн
-    # добавлено поле медицинской категории с фиксированным набором значений согласно украинской классификации.
     qualification_category = fields.Selection(
         list(doctor_qualification_category),
         required=True,
         string='Qualification Category',
         default=doctor_qualification_category.SPECIALIST[0],
-        help="""Інтерн — лікар на етапі післядипломного навчання та практики.
-        Лікар-спеціаліст — лікар із сертифікатом, що працює самостійно.
-        Друга категорія — лікар із досвідом роботи від 3 років.
-        Перша категорія — досвідчений лікар із стажем від 5–7 років.
-        Вища категорія — лікар-експерт із великим досвідом від 10 років."""
+        help="""Intern - a doctor at the stage of postgraduate training and practice.
+                Specialist doctor - a doctor with a certificate who works independently.
+                The second category - a doctor with work experience of 3 years or more.
+                The first category - an experienced doctor with experience of 5-7 years.
+                The highest category - an expert doctor with extensive experience of 10 years or more."""
     )
 
     sequence = fields.Integer(default=10)
@@ -58,7 +54,6 @@ class HrHospitalDoctorCategory(models.Model):
     def _compute_doctor_amount(self):
         for record in self:
             record.doctor_amount = len(record.doctor_ids)
-
 
 
 class HrHospitalDoctor(models.Model):
@@ -89,6 +84,12 @@ class HrHospitalDoctor(models.Model):
         store=True
     )
 
+    intern_ids = fields.One2many(
+        comodel_name='hr_hospital.doctor',
+        inverse_name='mentor_id',
+        string='Interns'
+    )
+
     specialization = fields.Selection(
         list(doctor_specialization),
         string='Specialization',
@@ -102,6 +103,16 @@ class HrHospitalDoctor(models.Model):
     mentor_name = fields.Char(
         related='mentor_id.name',
         string='Mentor name'
+    )
+
+    mentor_specialization = fields.Selection(
+        related='mentor_id.specialization',
+        string='Specialization',
+    )
+
+    mentor_category = fields.Char(
+        related='mentor_id.category_id.name',
+        string='Category'
     )
 
     personal_patient_ids = fields.One2many(
@@ -118,17 +129,24 @@ class HrHospitalDoctor(models.Model):
                     (doctor.category_id.qualification_category == doctor_qualification_category.INTERN[0])
             )
 
-
     @api.constrains('mentor_id')
     def _check_mentor(self):
         for doctor in self:
-            if doctor.mentor_id and doctor.mentor_id.id == doctor.id:
-                raise ValidationError('A doctor cannot be his own mentor!')
+            if doctor.mentor_id:
+                if doctor.mentor_id.id == doctor.id:
+                    raise ValidationError('A doctor cannot be his own mentor!')
 
-            if doctor.mentor_id and doctor.mentor_id.is_intern:
-                raise ValidationError('An intern cannot be a mentor!')
+                if doctor.mentor_id.is_intern:
+                    raise ValidationError('An intern cannot be a mentor!')
 
-
-
-
-
+    def action_create_appointment(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Create Appointment',
+            'res_model': 'hr_hospital.appointment',
+            'view_mode': 'form',
+            'context': {
+                'default_doctor_id': self.id,
+                'default_scheduled_datetime': fields.Datetime.now()
+            }
+        }

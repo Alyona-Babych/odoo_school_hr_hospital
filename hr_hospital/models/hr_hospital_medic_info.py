@@ -1,23 +1,18 @@
-from dateutil.relativedelta import relativedelta
 import logging
 
-from odoo import api, models, fields
+from dateutil.relativedelta import relativedelta
 
-from ..constants.person_constant import (
-    person_gender,
-    person_blood_group,
-    person_rh_factor
-)
+from odoo import api, fields, models
 
+from ..constants.person_constant import person_blood_group, person_gender, person_rh_factor
 
 _logger = logging.getLogger(__name__)
 
 
 class HrHospitalMedicInfo(models.AbstractModel):
     _name = 'hr_hospital.medic.info'
-    _description = """ Abstract model for storing basic medical information such 
-                    as blood group, gender, date of birth, and computed age."""
-
+    _description = """Abstract model for storing basic medical information such
+    as blood group, gender, date of birth, and computed age."""
 
     blood_group = fields.Selection(
         list(person_blood_group),

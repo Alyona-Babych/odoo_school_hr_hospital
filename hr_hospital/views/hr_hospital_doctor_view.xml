@@ -24,33 +24,61 @@
         <field name='arch' type='xml'>
             <form string="Doctor">
                 <sheet>
-
                     <div class="oe_title">
                         <h1>
                             <field name="name" placeholder="Doctor full name"/>
                         </h1>
-                        <div class="o_row">
-                            <group col="2">
-                                <group>
-                                    <field name="gender"/>
-                                    <field name="birth_date"/>
-                                    <field name="age"/>
-                                    <field name="phone"/>
-                                    <field name="email"/>
-                                </group>
-                                <group>
-                                    <field name="category_id"/>
-                                    <field name="specialization"/>
-                                    <field name="mentor_id"
-                                           domain="[('id', '!=', id), ('is_intern', '=', False)]"
-                                           invisible="not is_intern"/>
-                                </group>
-                            </group>
-                        </div>
                     </div>
+                    <group>
+                        <group>
+                            <field name="gender"/>
+                            <field name="birth_date"/>
+                            <field name="age"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="category_id"/>
+                                <field name="specialization"/>
+                            </group>
+                            <newline/>
+                            <group string="Mentor info" invisible="not is_intern">
+                                <field name="mentor_id"
+                                       domain="[('id', '!=', id), ('is_intern', '=', False)]"/>
+                                <field name="mentor_specialization"/>
+                                <field name="mentor_category"/>
+                            </group>
+                        </group>
+                    </group>
 
                     <notebook>
-                        <page string="Personal Patients">
+                        <page string="Interns Info" invisible="is_intern">
+                            <field name="intern_ids" readonly="1">
+                                <kanban edit="0" delete="0" create="0">
+                                    <templates>
+                                         <t t-name="card">
+                                            <div class="oe_kanban_card"
+                                                 style="background: #fff;
+                                                        border-left: 4px solid #00a09d;
+                                                        border-radius: 10px;
+                                                        padding: 12px;">
+                                                <h4 class="mb-1">
+                                                    <field name="name"/>
+                                                </h4>
+                                                <div class="text-muted">
+                                                    <field name="gender"/> • <field name="age"/>
+                                                </div>
+                                                <div>
+                                                    <field name="specialization"/>
+                                                </div>
+                                            </div>
+                                         </t>
+                                    </templates>
+                                </kanban>
+                            </field>
+                        </page>
+                        <page string="Personal Patients" invisible="is_intern">
                             <field name="personal_patient_ids" readonly="1">
                                 <list create="0" delete="0">
                                     <field name="name"/>
@@ -81,10 +109,59 @@
         </field>
     </record>
 
+
+    <record id="hr_hospital_doctor_kanban" model="ir.ui.view">
+        <field name="name">hr_hospital.doctor.kanban</field>
+        <field name="model">hr_hospital.doctor</field>
+         <field name="arch" type="xml">
+             <kanban string="Doctors" default_group_by="category_id">
+                 <field name="name"/>
+                 <field name="category_id"/>
+                 <templates>
+                     <t t-name="card">
+                         <div class="oe_kanban_card"
+                              style="background: #fff;
+                                     border-left: 4px solid #00a09d;
+                                     border-radius: 10px;
+                                     padding: 12px;">
+                             <h4 class="mb-1">
+                                 <field name="name"/>
+                             </h4>
+                             <div class="text-muted">
+                                <field name="specialization"/>
+                             </div>
+                             <div style="margin-top: 12px; display: flex; justify-content: flex-end;">
+                                <button type="object"
+                                        name="action_create_appointment"
+                                        string="Create Appointment"
+                                        class="btn-info"/>
+                             </div>
+                         </div>
+                     </t>
+                 </templates>
+             </kanban>
+         </field>
+    </record>
+
+
+    <record id="hr_hospital_doctor_search" model="ir.ui.view">
+        <field name="name">hr_hospital.doctor.search</field>
+        <field name="model">hr_hospital.doctor</field>
+         <field name="arch" type="xml">
+             <search>
+                 <field name="name" filter_domain="[('name', 'ilike', self)]"/>
+
+                 <filter name="filter_is_intern" string="Intern" domain="[('is_intern', '=', True)]"/>
+                 <filter name="filter_is_mentor" string="Mentor" domain="[('intern_ids', '!=', False)]"/>
+             </search>
+         </field>
+    </record>
+
     <record id='hr_hospital_doctor_action_window' model='ir.actions.act_window'>
         <field name='name'>Doctors</field>
         <field name="res_model">hr_hospital.doctor</field>
-        <field name="view_mode">list,form</field>
+        <field name="view_mode">list,kanban,form</field>
+        <field name="search_view_id" ref="hr_hospital_doctor_search"/>
     </record>
 
 </odoo>

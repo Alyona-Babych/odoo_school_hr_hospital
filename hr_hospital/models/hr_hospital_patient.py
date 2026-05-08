@@ -1,8 +1,6 @@
 import logging
 
-from odoo import api, models, fields
-
-
+from odoo import api, fields, models
 
 _logger = logging.getLogger(__name__)
 
@@ -71,7 +69,7 @@ class HrHospitalPatient(models.Model):
         for patient in self:
             active_histories = patient.doctor_history_ids.filtered(lambda h: h.active
                                                                              and not h.doctor_change_date
-                                                                   )
+            )
 
             last_history = max(
                 active_histories,
@@ -82,9 +80,29 @@ class HrHospitalPatient(models.Model):
             patient.personal_doctor_id = last_history.doctor_id if last_history else False
             patient.current_doctor_history_id = last_history if last_history else False
 
-
     @api.depends('appointment_ids.doctor_id')
     def _compute_doctors(self):
         for patient in self:
             patient.doctor_ids = patient.appointment_ids.mapped('doctor_id')
 
+    def action_open_appointment_list(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Patient Appointments',
+            'res_model': 'hr_hospital.appointment',
+            'view_mode': 'list',
+            'domain': [('patient_id', '=', self.id)],
+        }
+
+    def action_create_appointment(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Create Appointment',
+            'res_model': 'hr_hospital.appointment',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+                'default_patient_id': self.id,
+                'default_scheduled_datetime': fields.Datetime.now()
+            }
+        }

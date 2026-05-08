@@ -1,6 +1,5 @@
 from collections import namedtuple
 
-
 Gender = namedtuple(
     'Gender',
     (

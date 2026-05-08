@@ -8,8 +8,8 @@
             <list string='Appointments'>
                 <field name="scheduled_datetime"/>
                 <field name="actual_datetime"/>
-                <field name="patient_id"/>
                 <field name="doctor_id"/>
+                <field name="patient_id"/>
                 <field name="state"/>
             </list>
         </field>
@@ -20,43 +20,137 @@
         <field name='model'>hr_hospital.appointment</field>
         <field name='arch' type='xml'>
             <form string="Appointment">
+                <header>
+                    <button name="action_set_cancelled_state"
+                            type="object"
+                            string="Cancel Appointment"
+                            class="btn-danger"/>
+                    <button name="action_set_done_state"
+                            type="object"
+                            string="Done Appointment"
+                            class="btn-success"/>
+
+                    <field name="state" widget="statusbar" options="{'clickable': false}"/>
+                </header>
                 <sheet>
+
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_diseases_appointment_list"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-link">
+
+                            <field name="diseases_appointment_count"
+                                   widget="statinfo"
+                                   string="Related Appointments"/>
+                        </button>
+                    </div>
+
                     <group>
                         <group>
                             <field name="patient_id"/>
-                        </group>
-                        <group>
                             <field name="doctor_id"/>
                             <field name="mentor_id"
                                    invisible="not mentor_id"
                                    readonly="1"/>
                         </group>
-                    </group>
-
-                    <group col="2">
                         <group>
                             <field name="scheduled_datetime"/>
                             <field name="actual_datetime"/>
                         </group>
-                        <group>
-                            <field name="state"/>
-                            <field name="disease_id" domain="[('parent_id', '!=', False)]"/>
-                        </group>
                     </group>
-
+                    <separator/>
                     <group>
                         <field name="summary"/>
                     </group>
+                    <notebook>
+                        <page string="Diseases">
+                            <field name="disease_ids" options="{'no_create': True}">
+                                <list>
+                                    <field name="display_name"/>
+
+                                    <button name="action_open_appointments_for_one_disease"
+                                            type="object"
+                                            string="Related Appointments"
+                                            icon="fa-link"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
     </record>
 
-    <record id='hr_hospital_appointment_action_window' model='ir.actions.act_window'>
-        <field name='name'>Appointments</field>
+    <record id="hr_hospital_appointment_calendar" model="ir.ui.view">
+        <field name="name">hr_hospital.appointment.calendar</field>
+        <field name="model">hr_hospital.appointment</field>
+        <field name="arch" type="xml">
+            <calendar string="Appointments" date_start="scheduled_datetime" mode="month" event_open_popup="1" color="color">
+                <field name="display_name"/>
+                <field name="patient_id"/>
+                <field name="state"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="hr_hospital_appointment_search" model="ir.ui.view">
+        <field name="name">hr_hospital.appointment.search</field>
+        <field name="model">hr_hospital.appointment</field>
+         <field name="arch" type="xml">
+             <search>
+                 <field name="patient_id"  filter_domain="[('patient_id.name','ilike',self)]"/>
+                 <field name="doctor_id" filter_domain="[('doctor_id.name','ilike',self)]"/>
+                 <field name="disease_ids" filter_domain="['|', ('disease_ids.name','ilike',self), ('disease_ids.icd_code','ilike',self)]"/>
+
+                 <searchpanel>
+                     <field name="doctor_id" string="Doctor" select="one" icon="fa-user-md"/>
+                 </searchpanel>
+
+                 <filter name="filter_scheduled_datetime" string="Scheduled Date" date="scheduled_datetime"/>
+                 <filter name="filter_actual_datetime" string="Actual Date" date="actual_datetime"/>
+                 <filter name="current_year" string="Current Year" context="{'search_default_current_year': 1}"/>
+
+                 <filter name='group_by_state' string="Status Appointment" context="{'group_by': 'state'}"/>
+             </search>
+         </field>
+    </record>
+
+    <record id="hr_hospital_appointment_pivot" model="ir.ui.view">
+        <field name="name">hr_hospital.appointment.pivot</field>
+        <field name="model">hr_hospital.appointment</field>
+        <field name="arch" type="xml">
+            <pivot display_quantity="1" string="Appointments by Year">
+                <field name="doctor_id" type="row"/>
+                <field name="state" type="col"/>
+
+                <field name="scheduled_datetime" interval="month" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="hr_hospital_appointment_gragh" model="ir.ui.view">
+        <field name="name">hr_hospital.appointment.gragh</field>
+        <field name="model">hr_hospital.appointment</field>
+        <field name="arch" type="xml">
+            <graph type="bar" stacked="1" string="Appointments by Month">
+                <field name="scheduled_datetime" interval="month" type="row"/>
+                <field name="disease_ids" type="col"/>
+                <field name="id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="hr_hospital_appointment_action_window" model="ir.actions.act_window">
+        <field name="name">Appointments</field>
         <field name="res_model">hr_hospital.appointment</field>
-        <field name="view_mode">list,form</field>
-        <field name="context">{'group_by': 'scheduled_datetime'}</field>
+        <field name="view_mode">list,calendar,pivot,graph,form</field>
+        <field name="search_view_id" ref="hr_hospital_appointment_search"/>
+        <field name="context">{
+            'default_name': 'Appointment',
+            'search_default_current_year': 1
+            }
+        </field>
     </record>
 
 </odoo>

@@ -42,4 +42,10 @@
               action="hr_hospital.hr_hospital_disease_action_window"
               sequence="20"/>
 
+    <menuitem id="hr_hospital_menu_doctor_diseases_category"
+              name="Diseases Category"
+              parent="hr_hospital_menu_dictionary"
+              action="hr_hospital.hr_hospital_disease_category_action_window"
+              sequence="30"/>
+
 </odoo>
