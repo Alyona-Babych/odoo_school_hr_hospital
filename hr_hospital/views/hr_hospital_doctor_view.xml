@@ -5,7 +5,13 @@
         <field name='model'>hr_hospital.doctor</field>
         <field name='arch' type='xml'>
             <list string='Doctors'>
-                <field name="name"/>
+                <field name="color" invisible="1"/>
+                <field name="name"
+                        decoration-success="color in (6, 7)"
+                        decoration-warning="color in (3, 4, 5)"
+                        decoration-danger="color in (1, 2)"
+                        decoration-info="color in (8, 9)"
+                        decoration-primary="color in (10, 11)"/>
                 <field name="specialization"/>
                 <field name="phone"/>
                 <field name="is_intern"
@@ -109,14 +115,16 @@
         </field>
     </record>
 
-
     <record id="hr_hospital_doctor_kanban" model="ir.ui.view">
         <field name="name">hr_hospital.doctor.kanban</field>
         <field name="model">hr_hospital.doctor</field>
          <field name="arch" type="xml">
-             <kanban string="Doctors" default_group_by="category_id">
+             <kanban string="Doctors" default_group_by="category_id" highlight_color="color">
+                 <field name="color"/>
                  <field name="name"/>
                  <field name="category_id"/>
+                 <field name="intern_names"/>
+                 <field name="color"/>
                  <templates>
                      <t t-name="card">
                          <div class="oe_kanban_card"
@@ -124,12 +132,16 @@
                                      border-left: 4px solid #00a09d;
                                      border-radius: 10px;
                                      padding: 12px;">
-                             <h4 class="mb-1">
-                                 <field name="name"/>
-                             </h4>
-                             <div class="text-muted">
+                              <h4><field name="name"/></h4>
+                             <div class="text-muted mt-1">
                                 <field name="specialization"/>
                              </div>
+                             <div t-if="record.intern_names.raw_value" class="mt-2">
+                                <strong>Interns: </strong>
+                                <span class="text-muted">
+                                    <t t-out="record.intern_names.value"/>
+                                </span>
+                            </div>
                              <div style="margin-top: 12px; display: flex; justify-content: flex-end;">
                                 <button type="object"
                                         name="action_create_appointment"
@@ -138,11 +150,19 @@
                              </div>
                          </div>
                      </t>
+                     <t t-name="menu">
+                        <a role="menuitem" type="open"
+                           class="dropdown-item">Open</a>
+                        <a role="menuitem" type="archive"
+                           class="dropdown-item">Archive</a>
+                        <a role="menuitem" type="delete"
+                           class="dropdown-item">Delete</a>
+                        <field name="color" widget="kanban_color_picker"/>
+                     </t>
                  </templates>
              </kanban>
          </field>
     </record>
-
 
     <record id="hr_hospital_doctor_search" model="ir.ui.view">
         <field name="name">hr_hospital.doctor.search</field>

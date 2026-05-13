@@ -55,8 +55,7 @@
                 <field name="icd_code"/>
 
                 <searchpanel>
-                    <field name="parent_id"
-                           hierarchy="1"/>
+                    <field name="parent_id" hierarchy="1"/>
                 </searchpanel>
             </search>
         </field>

@@ -89,7 +89,8 @@
             <calendar string="Appointments" date_start="scheduled_datetime" mode="month" event_open_popup="1" color="color">
                 <field name="display_name"/>
                 <field name="patient_id"/>
-                <field name="state"/>
+                <field name="doctor_id"/>
+                <field name="state" filters="1"/>
             </calendar>
         </field>
     </record>

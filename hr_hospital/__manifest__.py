@@ -5,10 +5,11 @@
     'website': 'https://odoo.school/',
     'category': 'Services',
     'license': 'LGPL-3',
-    'version': '19.0.1.2.0',
+    'version': '19.0.1.3.0',
 
     'depends': [
         'base',
+        'web',
     ],
 
     'data': [
@@ -31,6 +32,8 @@
         'wizard/hr_hospital_mass_reassign_doctor_wizard_view.xml',
         'wizard/hr_hospital_visit_report_wizard.xml',
         'wizard/hr_hospital_disease_report_wizard.xml',
+
+        'report/hr_hospital_doctor_report.xml',
     ],
 
     'demo': [

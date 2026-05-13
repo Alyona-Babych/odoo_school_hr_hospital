@@ -34,7 +34,8 @@ class HrHospitalDiseaseReportWizard(models.TransientModel):
 
         if self.disease_ids:
             domain += [('disease_ids', 'in', self.disease_ids.ids)]
-        else: domain += [('disease_ids', '!=', False)]
+        else:
+            domain += [('disease_ids', '!=', False)]
 
         start_date = self.start_date if self.start_date else date.min
         end_date = self.end_date if self.end_date else date.max

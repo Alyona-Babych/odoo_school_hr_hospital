@@ -66,6 +66,7 @@ class HrHospitalDoctorHistory(models.Model):
                         'type': 'notification'
                     }
                 }
+        return None
 
     @api.constrains('doctor_id')
     def _check_is_doctor_intern(self):

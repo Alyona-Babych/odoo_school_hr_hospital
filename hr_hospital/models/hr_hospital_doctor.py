@@ -84,6 +84,10 @@ class HrHospitalDoctor(models.Model):
         store=True
     )
 
+    intern_names = fields.Char(
+        compute='_compute_intern_names'
+    )
+
     intern_ids = fields.One2many(
         comodel_name='hr_hospital.doctor',
         inverse_name='mentor_id',
@@ -121,6 +125,16 @@ class HrHospitalDoctor(models.Model):
         string='Personal Patients'
     )
 
+    appointment_ids = fields.One2many(
+        comodel_name='hr_hospital.appointment',
+        inverse_name='doctor_id',
+        string='Appointments'
+    )
+
+    color = fields.Integer(default=0)
+
+    active = fields.Boolean(default=True)
+
     @api.depends('category_id.qualification_category')
     def _compute_is_intern(self):
         for doctor in self:
@@ -128,6 +142,11 @@ class HrHospitalDoctor(models.Model):
                     doctor.category_id and
                     (doctor.category_id.qualification_category == doctor_qualification_category.INTERN[0])
             )
+
+    @api.depends('intern_ids')
+    def _compute_intern_names(self):
+        for doctor in self:
+            doctor.intern_names = ', '.join(doctor.intern_ids.mapped('name')) if doctor.intern_ids else ''
 
     @api.constrains('mentor_id')
     def _check_mentor(self):
@@ -145,8 +164,25 @@ class HrHospitalDoctor(models.Model):
             'name': 'Create Appointment',
             'res_model': 'hr_hospital.appointment',
             'view_mode': 'form',
+            'target': 'new',
             'context': {
                 'default_doctor_id': self.id,
                 'default_scheduled_datetime': fields.Datetime.now()
             }
         }
+
+    def _get_report_base_filename(self):
+        if len(self) > 1:
+            return f'Appointments - Doctor {self.name}'
+
+        return f'Appointments - Doctors({len(self)})'
+
+    def _get_appointments(self):
+        self.ensure_one()
+
+        return self.appointment_ids.sorted(key=lambda app: app.scheduled_datetime, reverse=True)
+
+    def _get_patients(self):
+        self.ensure_one()
+
+        return self.appointment_ids.mapped('patient_id').sorted(key=lambda p: p.name)

@@ -88,7 +88,7 @@ class HrHospitalAppointment(models.Model):
                 appointment.color = 1
 
             elif appointment.state == appointment_status.PLANNED[0]:
-                appointment.color = 5
+                appointment.color = 3
 
     @api.depends('doctor_id')
     def _compute_mentor(self):
@@ -205,3 +205,14 @@ class HrHospitalAppointment(models.Model):
             'view_mode': 'list,form',
             'domain': domain,
         }
+
+    def _get_state_color(self):
+        self.ensure_one()
+
+        colors = {
+            appointment_status.DONE[0]: 'green',
+            appointment_status.CANCELLED[0]: 'red',
+            appointment_status.PLANNED[0]: 'orange',
+        }
+
+        return colors.get(self.state, 'black')
