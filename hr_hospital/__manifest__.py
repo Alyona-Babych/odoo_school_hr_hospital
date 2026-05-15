@@ -5,7 +5,7 @@
     'website': 'https://odoo.school/',
     'category': 'Services',
     'license': 'LGPL-3',
-    'version': '19.0.1.3.0',
+    'version': '19.0.1.4.0',
 
     'depends': [
         'base',
@@ -14,11 +14,13 @@
 
     'data': [
 
+        'security/hr_hospital_groups.xml',
         'security/ir.model.access.csv',
+        'security/hr_hospital_security.xml',
 
         'data/hr_hospital_disease_category_data.xml',
         'data/hr_hospital_disease_data.xml',
-        'data/hr_hospital_doctor_category.xml',
+        'data/hr_hospital_doctor_category_data.xml',
 
         'views/hr_hospital_patient_view.xml',
         'views/hr_hospital_doctor_category_view.xml',

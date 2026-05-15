@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="rule_patient_own_appointments"  model="ir.rule">
+        <field name="name">Patient own appointments</field>
+        <field name="model_id" ref="model_hr_hospital_appointment"/>
+        <field name="groups" eval="[Command.link(ref('hr_hospital.group_patient'))]"/>
+        <field name="domain_force">[('patient_id.user_id', '=', user.id)]</field>
+    </record>
+
+    <record id="rule_interm_own_appointments"  model="ir.rule">
+        <field name="name">Intern own appointments</field>
+        <field name="model_id" ref="model_hr_hospital_appointment"/>
+        <field name="groups" eval="[Command.link(ref('hr_hospital.group_intern'))]"/>
+        <field name="domain_force">[('doctor_id.user_id', '=', user.id)]</field>
+    </record>
+
+    <record id="rule_doctor_own_appointments"  model="ir.rule">
+        <field name="name">Doctor own appointments</field>
+        <field name="model_id" ref="model_hr_hospital_appointment"/>
+        <field name="groups" eval="[Command.link(ref('hr_hospital.group_doctor'))]"/>
+        <field name="domain_force">[('mentor_id.user_id', '=', user.id)]</field>
+    </record>
+
+    <record id="rule_manager_all_appointments"  model="ir.rule">
+        <field name="name">Manager all appointments</field>
+        <field name="model_id" ref="model_hr_hospital_appointment"/>
+        <field name="groups" eval="[Command.link(ref('hr_hospital.group_manager'))]"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+    </record>
+
+    <record id="rule_doctor_own_history"  model="ir.rule">
+        <field name="name">Doctor own history</field>
+        <field name="model_id" ref="model_hr_hospital_doctor_history"/>
+        <field name="groups" eval="[Command.link(ref('hr_hospital.group_doctor'))]"/>
+        <field name="domain_force">[('doctor_id.user_id', '=', user.id)]</field>
+    </record>
+
+    <record id="rule_manager_all_history"  model="ir.rule">
+        <field name="name">Manager all doctor history</field>
+        <field name="model_id" ref="model_hr_hospital_doctor_history"/>
+        <field name="groups" eval="[Command.link(ref('hr_hospital.group_manager'))]"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+    </record>
+
+</odoo>

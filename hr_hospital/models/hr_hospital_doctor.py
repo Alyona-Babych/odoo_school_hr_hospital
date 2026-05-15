@@ -52,8 +52,8 @@ class HrHospitalDoctorCategory(models.Model):
 
     @api.depends('doctor_ids')
     def _compute_doctor_amount(self):
-        for record in self:
-            record.doctor_amount = len(record.doctor_ids)
+        for category in self:
+            category.doctor_amount = len(category.doctor_ids)
 
 
 class HrHospitalDoctor(models.Model):
@@ -172,7 +172,7 @@ class HrHospitalDoctor(models.Model):
         }
 
     def _get_report_base_filename(self):
-        if len(self) > 1:
+        if len(self) == 1:
             return f'Appointments - Doctor {self.name}'
 
         return f'Appointments - Doctors({len(self)})'
