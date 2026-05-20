@@ -5,61 +5,61 @@
 
     <record id="disease_a00" model="hr_hospital.disease">
         <field name="icd_code">A00</field>
-        <field name="name">Холера</field>
+        <field name="name">Cholera</field>
         <field name="category_id" ref="disease_category_a00_a09"/>
     </record>
 
     <record id="disease_a01" model="hr_hospital.disease">
         <field name="icd_code">A01</field>
-        <field name="name">Черевний тиф та паратиф</field>
+        <field name="name">Typhoid and Paratyphoid Fevers</field>
         <field name="category_id" ref="disease_category_a00_a09"/>
     </record>
 
     <record id="disease_a02" model="hr_hospital.disease">
         <field name="icd_code">A02</field>
-        <field name="name">Інші сальмонельозні інфекції</field>
+        <field name="name">Other Salmonella Infections</field>
         <field name="category_id" ref="disease_category_a00_a09"/>
     </record>
 
     <record id="disease_a03" model="hr_hospital.disease">
         <field name="icd_code">A03</field>
-        <field name="name">Шигельоз</field>
+        <field name="name">Shigellosis</field>
         <field name="category_id" ref="disease_category_a00_a09"/>
     </record>
 
     <record id="disease_a04" model="hr_hospital.disease">
         <field name="icd_code">A04</field>
-        <field name="name">Інші бактеріальні кишкові інфекції</field>
+        <field name="name">Other Bacterial Intestinal Infections</field>
         <field name="category_id" ref="disease_category_a00_a09"/>
     </record>
 
     <record id="disease_a05" model="hr_hospital.disease">
         <field name="icd_code">A05</field>
-        <field name="name">Інші бактеріальні харчові отруєння, не класифіковані в інших рубриках</field>
+        <field name="name">Other Bacterial Food Poisoning, Not Elsewhere Classified</field>
         <field name="category_id" ref="disease_category_a00_a09"/>
     </record>
 
     <record id="disease_a06" model="hr_hospital.disease">
         <field name="icd_code">A06</field>
-        <field name="name">Амебіаз</field>
+        <field name="name">Amoebiasis</field>
         <field name="category_id" ref="disease_category_a00_a09"/>
     </record>
 
     <record id="disease_a07" model="hr_hospital.disease">
         <field name="icd_code">A07</field>
-        <field name="name">Інші протозойні кишкові хвороби</field>
+        <field name="name">Other Protozoal Intestinal Diseases</field>
         <field name="category_id" ref="disease_category_a00_a09"/>
     </record>
 
     <record id="disease_a08" model="hr_hospital.disease">
         <field name="icd_code">A08</field>
-        <field name="name">Вірусні та інші уточнені кишкові інфекції</field>
+        <field name="name">Viral and Other Specified Intestinal Infections</field>
         <field name="category_id" ref="disease_category_a00_a09"/>
     </record>
 
     <record id="disease_a09" model="hr_hospital.disease">
         <field name="icd_code">A09</field>
-        <field name="name">Інший гастроентерит та коліт інфекційного та неуточненого походження</field>
+        <field name="name">Infectious Gastroenteritis and Colitis, Unspecified</field>
         <field name="category_id" ref="disease_category_a00_a09"/>
     </record>
 
@@ -67,61 +67,61 @@
 
     <record id="disease_a80" model="hr_hospital.disease">
         <field name="icd_code">A80</field>
-        <field name="name">Гострий поліомієліт</field>
+        <field name="name">Acute Poliomyelitis</field>
         <field name="category_id" ref="disease_category_a80_a89"/>
     </record>
 
     <record id="disease_a81" model="hr_hospital.disease">
         <field name="icd_code">A81</field>
-        <field name="name">Повільні вірусні інфекції центральної нервової системи</field>
+        <field name="name">Slow Viral Infections of the Central Nervous System</field>
         <field name="category_id" ref="disease_category_a80_a89"/>
     </record>
 
     <record id="disease_a82" model="hr_hospital.disease">
         <field name="icd_code">A82</field>
-        <field name="name">Сказ</field>
+        <field name="name">Rabies</field>
         <field name="category_id" ref="disease_category_a80_a89"/>
     </record>
 
     <record id="disease_a83" model="hr_hospital.disease">
         <field name="icd_code">A83</field>
-        <field name="name">Комариний вірусний енцефаліт</field>
+        <field name="name">Mosquito-Borne Viral Encephalitis</field>
         <field name="category_id" ref="disease_category_a80_a89"/>
     </record>
 
     <record id="disease_a84" model="hr_hospital.disease">
         <field name="icd_code">A84</field>
-        <field name="name">Кліщовий вірусний енцефаліт</field>
+        <field name="name">Tick-Borne Viral Encephalitis</field>
         <field name="category_id" ref="disease_category_a80_a89"/>
     </record>
 
     <record id="disease_a85" model="hr_hospital.disease">
         <field name="icd_code">A85</field>
-        <field name="name">Інші вірусні енцефаліти, не класифіковані в інших рубриках</field>
+        <field name="name">Other Viral Encephalitis, Not Elsewhere Classified</field>
         <field name="category_id" ref="disease_category_a80_a89"/>
     </record>
 
     <record id="disease_a86" model="hr_hospital.disease">
         <field name="icd_code">A86</field>
-        <field name="name">Неуточнений вірусний енцефаліт</field>
+        <field name="name">Unspecified Viral Encephalitis</field>
         <field name="category_id" ref="disease_category_a80_a89"/>
     </record>
 
     <record id="disease_a87" model="hr_hospital.disease">
         <field name="icd_code">A87</field>
-        <field name="name">Вірусний менінгіт</field>
+        <field name="name">Viral Meningitis</field>
         <field name="category_id" ref="disease_category_a80_a89"/>
     </record>
 
     <record id="disease_a88" model="hr_hospital.disease">
         <field name="icd_code">A88</field>
-        <field name="name">Інші вірусні інфекційні хвороби центральної нервової системи, не класифіковані в інших рубриках</field>
+        <field name="name">Other Viral Infections of the Central Nervous System, Not Elsewhere Classified</field>
         <field name="category_id" ref="disease_category_a80_a89"/>
     </record>
 
     <record id="disease_a89" model="hr_hospital.disease">
         <field name="icd_code">A89</field>
-        <field name="name">Вірусна інфекційна хвороба центральної нервової системи, неуточнена</field>
+        <field name="name">Unspecified Viral Infection of the Central Nervous System</field>
         <field name="category_id" ref="disease_category_a80_a89"/>
     </record>
 
@@ -129,109 +129,109 @@
 
     <record id="disease_e70" model="hr_hospital.disease">
         <field name="icd_code">E70</field>
-        <field name="name">Порушення обміну ароматичних амінокислот</field>
+        <field name="name">Disorders of Aromatic Amino-Acid Metabolism</field>
         <field name="category_id" ref="disease_category_e70_e89"/>
     </record>
 
     <record id="disease_e71" model="hr_hospital.disease">
         <field name="icd_code">E71</field>
-        <field name="name">Порушення обміну амінокислот з розгалуженим ланцюгом та порушення обміну жирних кислот</field>
+        <field name="name">Disorders of Branched-Chain Amino Acid Metabolism and Fatty Acid Metabolism</field>
         <field name="category_id" ref="disease_category_e70_e89"/>
     </record>
 
     <record id="disease_e72" model="hr_hospital.disease">
         <field name="icd_code">E72</field>
-        <field name="name">Інші порушення обміну амінокислот</field>
+        <field name="name">Other Disorders of Amino-Acid Metabolism</field>
         <field name="category_id" ref="disease_category_e70_e89"/>
     </record>
 
     <record id="disease_e73" model="hr_hospital.disease">
         <field name="icd_code">E73</field>
-        <field name="name">Непереносимість лактози</field>
+        <field name="name">Lactose Intolerance</field>
         <field name="category_id" ref="disease_category_e70_e89"/>
     </record>
 
     <record id="disease_e74" model="hr_hospital.disease">
         <field name="icd_code">E74</field>
-        <field name="name">Інші порушення обміну вуглеводів</field>
+        <field name="name">Other Disorders of Carbohydrate Metabolism</field>
         <field name="category_id" ref="disease_category_e70_e89"/>
     </record>
 
     <record id="disease_e75" model="hr_hospital.disease">
         <field name="icd_code">E75</field>
-        <field name="name">Порушення обміну сфiнголiпiдiв та інші розлади в накопиченні лiпiдiв</field>
+        <field name="name">Disorders of Sphingolipid Metabolism and Other Lipid Storage Disorders</field>
         <field name="category_id" ref="disease_category_e70_e89"/>
     </record>
 
     <record id="disease_e76" model="hr_hospital.disease">
         <field name="icd_code">E76</field>
-        <field name="name">Порушення обміну глiкозамiноглiканiв</field>
+        <field name="name">Disorders of Glycosaminoglycan Metabolism</field>
         <field name="category_id" ref="disease_category_e70_e89"/>
     </record>
 
     <record id="disease_e77" model="hr_hospital.disease">
         <field name="icd_code">E77</field>
-        <field name="name">Порушення обміну глiкопротеїдiв</field>
+        <field name="name">Disorders of Glycoprotein Metabolism</field>
         <field name="category_id" ref="disease_category_e70_e89"/>
     </record>
 
     <record id="disease_e78" model="hr_hospital.disease">
         <field name="icd_code">E78</field>
-        <field name="name">Порушення обміну лiпопротеїдiв та інші лiпiдемiї</field>
+        <field name="name">Disorders of Lipoprotein Metabolism and Other Lipidemias</field>
         <field name="category_id" ref="disease_category_e70_e89"/>
     </record>
 
     <record id="disease_e79" model="hr_hospital.disease">
         <field name="icd_code">E79</field>
-        <field name="name">Порушення обміну пуринів та пiримiдинiв</field>
+        <field name="name">Disorders of Purine and Pyrimidine Metabolism</field>
         <field name="category_id" ref="disease_category_e70_e89"/>
     </record>
 
     <record id="disease_e80" model="hr_hospital.disease">
         <field name="icd_code">E80</field>
-        <field name="name">Порушення обміну порфірину та бiлiрубiну</field>
+        <field name="name">Disorders of Porphyrin and Bilirubin Metabolism</field>
         <field name="category_id" ref="disease_category_e70_e89"/>
     </record>
 
     <record id="disease_e83" model="hr_hospital.disease">
         <field name="icd_code">E83</field>
-        <field name="name">Порушення мінерального обміну</field>
+        <field name="name">Disorders of Mineral Metabolism</field>
         <field name="category_id" ref="disease_category_e70_e89"/>
     </record>
 
     <record id="disease_e84" model="hr_hospital.disease">
         <field name="icd_code">E84</field>
-        <field name="name">Кiстозний фіброз</field>
+        <field name="name">Cystic Fibrosis</field>
         <field name="category_id" ref="disease_category_e70_e89"/>
     </record>
 
     <record id="disease_e85" model="hr_hospital.disease">
         <field name="icd_code">E85</field>
-        <field name="name">Амілоїдоз</field>
+        <field name="name">Amyloidosis</field>
         <field name="category_id" ref="disease_category_e70_e89"/>
     </record>
 
     <record id="disease_e86" model="hr_hospital.disease">
         <field name="icd_code">E86</field>
-        <field name="name">Виснаження об'єму рідин організму</field>
+        <field name="name">Volume Depletion</field>
         <field name="category_id" ref="disease_category_e70_e89"/>
     </record>
 
     <record id="disease_e87" model="hr_hospital.disease">
         <field name="icd_code">E87</field>
-        <field name="name">Інші порушення водно-сольового балансу та кислотно-основного стану</field>
+        <field name="name">Other Disorders of Fluid, Electrolyte and Acid-Base Balance</field>
         <field name="category_id" ref="disease_category_e70_e89"/>
     </record>
 
     <record id="disease_e88" model="hr_hospital.disease">
         <field name="icd_code">E88</field>
-        <field name="name">Інші метаболiчнi порушення</field>
+        <field name="name">Other Metabolic Disorders</field>
         <field name="category_id" ref="disease_category_e70_e89"/>
     </record>
 
     <record id="disease_e89" model="hr_hospital.disease">
         <field name="icd_code">E89</field>
-        <field name="name">Інтраопераційні та післяпроцедурні ендокринні та метаболiчнi розлади, не класифіковані в інших рубриках</field>
+        <field name="name">Postprocedural Endocrine and Metabolic Disorders, Not Elsewhere Classified</field>
         <field name="category_id" ref="disease_category_e70_e89"/>
     </record>
 
@@ -239,31 +239,31 @@
 
     <record id="disease_i10" model="hr_hospital.disease">
         <field name="icd_code">I10</field>
-        <field name="name">Есенціальна (первинна) артеріальна гіпертензія</field>
+        <field name="name">Essential (Primary) Hypertension</field>
         <field name="category_id" ref="disease_category_i10_i15"/>
     </record>
 
     <record id="disease_i11" model="hr_hospital.disease">
         <field name="icd_code">I11</field>
-        <field name="name">Гіпертензивна хвороба серця (гіпертонічна хвороба з переважним ураженням серця)</field>
+        <field name="name">Hypertensive Heart Disease</field>
         <field name="category_id" ref="disease_category_i10_i15"/>
     </record>
 
     <record id="disease_i12" model="hr_hospital.disease">
         <field name="icd_code">I12</field>
-        <field name="name">Гіпертензивна (гіпертонічна) хвороба з переважним ураженням нирок</field>
+        <field name="name">Hypertensive Renal Disease</field>
         <field name="category_id" ref="disease_category_i10_i15"/>
     </record>
 
     <record id="disease_i13" model="hr_hospital.disease">
         <field name="icd_code">I13</field>
-        <field name="name">Гіпертензивна (гіпертонічна) хвороба з переважним ураженням серця та нирок</field>
+        <field name="name">Hypertensive Heart and Renal Disease</field>
         <field name="category_id" ref="disease_category_i10_i15"/>
     </record>
 
     <record id="disease_i15" model="hr_hospital.disease">
         <field name="icd_code">I15</field>
-        <field name="name">Вторинна артеріальна гіпертензія</field>
+        <field name="name">Secondary Hypertension</field>
         <field name="category_id" ref="disease_category_i10_i15"/>
     </record>
 
@@ -271,37 +271,37 @@
 
     <record id="disease_i20" model="hr_hospital.disease">
         <field name="icd_code">I20</field>
-        <field name="name">Стенокардія</field>
+        <field name="name">Angina Pectoris</field>
         <field name="category_id" ref="disease_category_i20_i25"/>
     </record>
 
     <record id="disease_i21" model="hr_hospital.disease">
         <field name="icd_code">I21</field>
-        <field name="name">Гострий інфаркт міокарда</field>
+        <field name="name">Acute Myocardial Infarction</field>
         <field name="category_id" ref="disease_category_i20_i25"/>
     </record>
 
     <record id="disease_i22" model="hr_hospital.disease">
         <field name="icd_code">I22</field>
-        <field name="name">Повторний інфаркт міокарда</field>
+        <field name="name">Subsequent Myocardial Infarction</field>
         <field name="category_id" ref="disease_category_i20_i25"/>
     </record>
 
     <record id="disease_i23" model="hr_hospital.disease">
         <field name="icd_code">I23</field>
-        <field name="name">Деякі поточні ускладнення гострого інфаркту міокарда</field>
+        <field name="name">Certain Current Complications Following Acute Myocardial Infarction</field>
         <field name="category_id" ref="disease_category_i20_i25"/>
     </record>
 
     <record id="disease_i24" model="hr_hospital.disease">
         <field name="icd_code">I24</field>
-        <field name="name">Інші форми гострої ішемічної хвороби серця</field>
+        <field name="name">Other Acute Ischemic Heart Diseases</field>
         <field name="category_id" ref="disease_category_i20_i25"/>
     </record>
 
     <record id="disease_i25" model="hr_hospital.disease">
         <field name="icd_code">I25</field>
-        <field name="name">Хронічна ішемічна хвороба серця</field>
+        <field name="name">Chronic Ischemic Heart Disease</field>
         <field name="category_id" ref="disease_category_i20_i25"/>
     </record>
 
@@ -309,49 +309,49 @@
 
     <record id="disease_i70" model="hr_hospital.disease">
         <field name="icd_code">I70</field>
-        <field name="name">Атеросклероз</field>
+        <field name="name">Atherosclerosis</field>
         <field name="category_id" ref="disease_category_i70_i79"/>
     </record>
 
     <record id="disease_i71" model="hr_hospital.disease">
         <field name="icd_code">I71</field>
-        <field name="name">Аневризма та розшарування аорти</field>
+        <field name="name">Aortic Aneurysm and Dissection</field>
         <field name="category_id" ref="disease_category_i70_i79"/>
     </record>
 
     <record id="disease_i72" model="hr_hospital.disease">
         <field name="icd_code">I72</field>
-        <field name="name">Інші форми аневризми та розшарування</field>
+        <field name="name">Other Aneurysm and Dissection</field>
         <field name="category_id" ref="disease_category_i70_i79"/>
     </record>
 
     <record id="disease_i73" model="hr_hospital.disease">
         <field name="icd_code">I73</field>
-        <field name="name">Інші хвороби периферичних судин</field>
+        <field name="name">Other Peripheral Vascular Diseases</field>
         <field name="category_id" ref="disease_category_i70_i79"/>
     </record>
 
     <record id="disease_i74" model="hr_hospital.disease">
         <field name="icd_code">I74</field>
-        <field name="name">Емболія та тромбоз артерії</field>
+        <field name="name">Arterial Embolism and Thrombosis</field>
         <field name="category_id" ref="disease_category_i70_i79"/>
     </record>
 
     <record id="disease_i77" model="hr_hospital.disease">
         <field name="icd_code">I77</field>
-        <field name="name">Інші ураження артерій та артеріол</field>
+        <field name="name">Other Disorders of Arteries and Arterioles</field>
         <field name="category_id" ref="disease_category_i70_i79"/>
     </record>
 
     <record id="disease_i78" model="hr_hospital.disease">
         <field name="icd_code">I78</field>
-        <field name="name">Хвороби капілярів</field>
+        <field name="name">Diseases of Capillaries</field>
         <field name="category_id" ref="disease_category_i70_i79"/>
     </record>
 
     <record id="disease_i79" model="hr_hospital.disease">
         <field name="icd_code">I79</field>
-        <field name="name">Ураження артерій, артеріол та капілярів при хворобах, класифікованих в інших рубриках</field>
+        <field name="name">Disorders of Arteries, Arterioles and Capillaries in Diseases Classified Elsewhere</field>
         <field name="category_id" ref="disease_category_i70_i79"/>
     </record>
 

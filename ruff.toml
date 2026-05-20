@@ -1,0 +1,218 @@
+# ruff.toml — Odoo 19 unified code style
+
+
+target-version = "py312"
+
+
+line-length = 120
+
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+   '.bzr',
+   '.direnv',
+   '.eggs',
+   '.git',
+   '.git-rewrite',
+   '.hg',
+   '.ipynb_checkpoints',
+   '.mypy_cache',
+   '.nox',
+   '.pants.d',
+   '.pyenv',
+   '.pytest_cache',
+   '.pytype',
+   '.ruff_cache',
+   '.svn',
+   '.tox',
+   '.venv',
+   '.vscode',
+   '__pypackages__',
+   '_build',
+   'buck-out',
+   'build',
+   'dist',
+   'node_modules',
+   'site-packages',
+   'venv',
+]
+
+
+# Skip generated/vendor code that shouldn't be linted
+extend-exclude = [
+ "**/migrations/**",
+ "**/static/lib/**",
+ "**/static/**/lib/**",
+ "**/node_modules/**",
+ "**/__manifest__.py",
+]
+
+
+# ── Linting ──────────────────────────────────────────────────────────
+
+
+[lint]
+preview = true
+external = ["OLS"]
+
+
+select = [
+   "BLE",        # flake8-blind-except
+   "C",          # flake8-comprehensions
+   "COM",        # flake8-commas
+   "E",          # pycodestyle Error
+   "EM",         # flake8-errmsg
+   "EXE",        # flake8-executable
+   "F",          # Pyflakes
+   "FA",         # flake8-future-annotations
+   "FLY",        # flynt
+   "G",          # flake8-logging-format
+   "I",          # isort
+   "ICN",        # flake8-import-conventions
+   "INT",        # flake8-gettext
+   "ISC",        # flake8-implicit-str-concat
+   "LOG",        # flake8-logging
+   "PGH",        # pygrep-hooks
+   "PIE",        # flake8-pie
+   "PLC",        # Pylint Convention
+   "PLE",        # Pylint Error
+   "PLW",        # Pylint Warning
+   "PYI",        # flake8-pyi
+   "RET",        # flake8-return
+   "RUF",        # Ruff-specific rules
+   "S",          # flake8-bandit (security) — added vs Odoo official
+   "SIM",        # flake8-simplify
+   "SLOT",       # flake8-slots
+   "T",          # flake8-print
+   "TC",         # flake8-type-checking
+   "TID",        # flake8-tidy-imports
+   "TRY",        # tryceratops
+   "UP",         # pyupgrade
+   "W",          # pycodestyle Warning
+   "YTT",        # flake8-2020
+]
+
+
+ignore = [
+   # ── Odoo official ignores (community compatibility) ──────────────
+   "C408",       # unnecessary-collection-call
+   "C420",       # unnecessary-dict-comprehension-for-iterable
+   "C901",       # complex-structure (Odoo views/controllers are complex by nature)
+   "E266",       # multiple-leading-hashes-for-block-comment
+   "E301",       # expected 1 blank line (Odoo code frequently skips these)
+   "E302",       # expected 2 blank lines (same)
+   "E501",       # line-too-long (handled via line-length = 100 above)
+   "E713",       # not-in-test
+   "EM102",      # f-string-in-exception
+   "FA100",      # future-rewritable-type-annotation
+   "PGH003",     # blanket-type-ignore
+   "PIE790",     # unnecessary-placeholder
+   "PIE808",     # unnecessary-range-start
+   "PLC2701",    # import-private-name
+   "PLW2901",    # redefined-loop-name
+   "RUF001",     # ambiguous-unicode-character-string (Odoo has i18n strings)
+   "RUF005",     # collection-literal-concatenation
+   "RUF012",     # mutable-class-default (Odoo fields are class-level mutable dicts)
+   "RUF067",     # non-empty-init-module
+   "RUF100",     # unused-noqa
+   "SIM102",     # collapsible-if
+   "SIM108",     # if-else-block-instead-of-if-exp
+   "SIM117",     # multiple-with-statements
+   "TID252",     # relative-imports (standard in Odoo addons)
+   "TRY003",     # raise-vanilla-args
+   "TRY300",     # try-consider-else
+   "TRY301",     # raise-within-try (Odoo ORM does this in _check_* methods)
+   "TRY400",     # error-instead-of-exception
+   "UP031",      # printf-string-formatting (Odoo uses % formatting extensively)
+
+
+   # ── Formatter-friendly (avoid conflict with [format] section) ────
+   "COM812",     # trailing-comma-missing (defer to ruff formatter)
+   "ISC001",     # single-line implicit string concat (formatter handles this)
+
+
+   # ── Odoo development patterns ────────────────────────────────────
+   "EM101",      # plain string in raise — Odoo does UserError('message') everywhere
+   "G201",       # logging.exception inside except — common Odoo logging pattern
+   "S101",       # assert statements — fine in tests and some validators
+   "SLF001",     # private member access — Odoo uses _fields, _name, _inherit etc.
+
+
+   # ── Typing: keep loose for shared 17/18/19 codebases ─────────────
+   "UP006",      # use-pep585-annotation (list vs List)
+   "UP007",      # use-pep604-annotation (X | Y vs Optional[X])
+   "UP035",      # deprecated-import (typing module)
+]
+
+
+# ── Per-file overrides ────────────────────────────────────────────────
+
+
+[lint.per-file-ignores]
+# Standard Odoo: __init__.py re-exports are intentional
+"**/__init__.py" = [
+   "F401",       # unused-import
+   "EXE002",     # shebang sometimes present
+   "I001",       # import-sorting (re-export order is intentional, not alphabetical)
+]
+
+
+# Models: largest files in Odoo, several patterns trigger false positives
+"**/models/*.py" = [
+   "BLE001",     # blind-except in compute/onchange methods is common
+   "EXE002",     # shebang line
+   "PLC0415",    # import-outside-top-level (needed for circular import resolution)
+]
+
+
+# Wizards: complex method signatures are normal, same relaxations as models
+"**/wizard/*.py" = [
+   "BLE001",
+   "PLC0415",
+]
+
+
+# Tests: everything that makes test writing painful
+"**/tests/**/*.py" = [
+   "S101",       # assert
+   "S105",       # hardcoded password in test fixtures
+   "S106",       # hardcoded password argument
+   "S110",       # try/except/pass
+   "T201",       # print statements (debugging)
+   "PLR2004",    # magic values in comparisons (assertEqual(result, 42))
+   "F841",       # unused variable (common in test setup / teardown)
+   "BLE001",     # blind-except
+   "EM101",      # plain string in exception
+   "PLC0415",    # conditional imports in test helpers
+   "SIM105",     # suppressible-exception (contextlib.suppress vs try/except/pass)
+]
+
+
+# ── Import ordering ───────────────────────────────────────────────────
+
+
+[lint.isort]
+# Match Odoo coding guidelines:
+# https://www.odoo.com/documentation/latest/contributing/development/coding_guidelines.html#imports
+section-order = [
+   "future",
+   "standard-library",
+   "third-party",
+   "first-party",
+   "local-folder",
+]
+known-first-party = ["odoo"]
+known-local-folder = ["odoo.addons"]
+known-third-party = ["lxml", "psycopg2", "werkzeug", "dateutil"]
+
+
+# ── Formatter ────────────────────────────────────────────────────────
+
+
+[format]
+# Single quotes: cleaner in Python, consistent with Odoo community code
+quote-style = "single"
+indent-style = "space"
+# Format code examples inside docstrings
+docstring-code-format = true
+

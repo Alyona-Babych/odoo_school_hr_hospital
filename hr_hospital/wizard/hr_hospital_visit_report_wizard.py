@@ -9,6 +9,24 @@ _logger = logging.getLogger(__name__)
 
 
 class HrHospitalVisitReportWizard(models.TransientModel):
+    """
+    Wizard for generating patient visit reports.
+
+    This wizard allows filtering hospital visits based on:
+    - doctors;
+    - patients;
+    - diseases;
+    - visit date range;
+    - visit completion status.
+
+    It supports both:
+    - completed visits reporting;
+    - scheduled + completed mixed reporting.
+
+    The wizard is used for analytical reporting and
+    medical workflow monitoring in hospital system.
+    """
+
     _name = 'hr_hospital.visit.report.wizard'
     _description = 'Patient Visit Report Wizard allowing filtering by doctors, patients, date range, disease, and visit status'
 
@@ -34,6 +52,17 @@ class HrHospitalVisitReportWizard(models.TransientModel):
     )
 
     def default_get(self, fields):
+        """
+        Pre-fill wizard values based on context.
+
+        If the wizard is opened from:
+        - patient view → pre-fills patient_ids;
+        - doctor view → pre-fills doctor_ids.
+
+        :param list fields: requested fields
+        :return: default values dictionary
+        :rtype: dict
+        """
         res = super().default_get(fields)
 
         active_model = self.env.context.get('active_model')
@@ -48,6 +77,21 @@ class HrHospitalVisitReportWizard(models.TransientModel):
         return res
 
     def action_generate_report(self):
+        """
+        Generate visit report based on selected filters.
+
+        Filtering logic:
+        - doctors (optional)
+        - patients (optional)
+        - diseases (optional)
+        - date range filtering
+        - completed or mixed visits mode
+
+        Returns appointment records matching criteria.
+
+        :return: action opening filtered appointment list view
+        :rtype: dict
+        """
         self.ensure_one()
         domain = []
 
@@ -69,7 +113,6 @@ class HrHospitalVisitReportWizard(models.TransientModel):
                 ('actual_datetime', '<=', end_date),
                 ('actual_datetime', '>=', start_date)
             ]
-
         else:
             domain += [
                 '|',

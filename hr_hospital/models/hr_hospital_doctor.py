@@ -9,6 +9,19 @@ _logger = logging.getLogger(__name__)
 
 
 class HrHospitalDoctorCategory(models.Model):
+    """
+    Doctor qualification category model.
+
+    This model defines hierarchical/functional categories of doctors
+    used to classify medical staff by qualification level.
+
+    It is used for:
+    - grouping doctors by qualification;
+    - controlling access and hierarchy;
+    - sorting doctors in UI views;
+    - analytics and reporting.
+    """
+
     _name = 'hr_hospital.doctor.category'
     _description = 'Doctor qualification categories used to classify doctors and manage their ordering and assignments.'
     _order = 'sequence'
@@ -16,6 +29,7 @@ class HrHospitalDoctorCategory(models.Model):
     name = fields.Char(
         required=True,
         string='Category',
+        translate=True,
         help='Custom doctor category name (defined by hospital)'
     )
 
@@ -52,11 +66,29 @@ class HrHospitalDoctorCategory(models.Model):
 
     @api.depends('doctor_ids')
     def _compute_doctor_amount(self):
+        """
+        Compute number of doctors in this category.
+
+        :return: None
+        """
         for category in self:
             category.doctor_amount = len(category.doctor_ids)
 
 
 class HrHospitalDoctor(models.Model):
+    """
+    Hospital doctor model.
+
+    This model stores all information about doctors working in the hospital.
+
+    It supports:
+    - doctor hierarchy (mentor / intern structure)
+    - doctor categories and qualifications
+    - patient assignment
+    - appointment tracking
+    - internal HR medical structure
+    """
+
     _name = 'hr_hospital.doctor'
     _description = 'Hospital doctors responsible for patient diagnosis and treatment'
     _inherit = 'hr_hospital.medic.info'
@@ -66,7 +98,7 @@ class HrHospitalDoctor(models.Model):
 
     user_id = fields.Many2one(
         comodel_name='res.users',
-        string='User'
+        string='Doctor User'
     )
 
     email = fields.Char()
@@ -137,6 +169,14 @@ class HrHospitalDoctor(models.Model):
 
     @api.depends('category_id.qualification_category')
     def _compute_is_intern(self):
+        """
+        Determine whether doctor is an intern.
+
+        A doctor is considered an intern if their category
+        has qualification type INTERN.
+
+        :return: None
+        """
         for doctor in self:
             doctor.is_intern = (
                     doctor.category_id and
@@ -145,11 +185,26 @@ class HrHospitalDoctor(models.Model):
 
     @api.depends('intern_ids')
     def _compute_intern_names(self):
+        """
+        Compute list of intern names under this doctor.
+
+        :return: None
+        """
         for doctor in self:
             doctor.intern_names = ', '.join(doctor.intern_ids.mapped('name')) if doctor.intern_ids else ''
 
     @api.constrains('mentor_id')
     def _check_mentor(self):
+        """
+        Validate mentor assignment rules.
+
+        Rules:
+            - Doctor cannot be their own mentor.
+            - Interns cannot act as mentors.
+
+        :raises ValidationError:
+            If mentor assignment is invalid.
+        """
         for doctor in self:
             if doctor.mentor_id:
                 if doctor.mentor_id.id == doctor.id:
@@ -159,6 +214,16 @@ class HrHospitalDoctor(models.Model):
                     raise ValidationError('An intern cannot be a mentor!')
 
     def action_create_appointment(self):
+        """
+        Open appointment creation form.
+
+        Pre-fills:
+            - doctor
+            - current datetime as scheduled time
+
+        :return: Action dictionary to open form view.
+        :rtype: dict
+        """
         return {
             'type': 'ir.actions.act_window',
             'name': 'Create Appointment',
@@ -172,17 +237,39 @@ class HrHospitalDoctor(models.Model):
         }
 
     def _get_report_base_filename(self):
+        """
+        Generate base filename for doctor report.
+
+        :return: Report filename
+        :rtype: str
+        """
         if len(self) == 1:
             return f'Appointments - Doctor {self.name}'
 
         return f'Appointments - Doctors({len(self)})'
 
     def _get_appointments(self):
+        """
+        Get all appointments for the doctor.
+
+        Sorted by scheduled datetime in descending order.
+
+        :return: Sorted appointment recordset
+        :rtype: recordset
+        """
         self.ensure_one()
 
         return self.appointment_ids.sorted(key=lambda app: app.scheduled_datetime, reverse=True)
 
     def _get_patients(self):
+        """
+        Get all unique patients assigned to doctor appointments.
+
+        Sorted alphabetically by patient name.
+
+        :return: Sorted patient recordset
+        :rtype: recordset
+        """
         self.ensure_one()
 
         return self.appointment_ids.mapped('patient_id').sorted(key=lambda p: p.name)

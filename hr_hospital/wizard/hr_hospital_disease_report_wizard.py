@@ -9,7 +9,23 @@ _logger = logging.getLogger(__name__)
 
 
 class HrHospitalDiseaseReportWizard(models.TransientModel):
+    """
+    Wizard for generating disease-based visit reports.
+
+    This wizard allows filtering completed patient appointments
+    by doctors, diseases, and time period.
+
+    It is used to:
+    - generate analytical reports for diseases;
+    - filter visits;
+    - group results by disease;
+    - support hospital reporting workflows.
+
+    The wizard does not store persistent data and is used
+    only for temporary report generation.
+    """
     _name = 'hr_hospital.disease.report.wizard'
+    _description = 'Wizard for Generating Disease Visit Reports'
 
     doctor_ids = fields.Many2many(
         comodel_name='hr_hospital.doctor',
@@ -26,6 +42,20 @@ class HrHospitalDiseaseReportWizard(models.TransientModel):
     end_date = fields.Date(string='Period End')
 
     def action_generate_report(self):
+        """
+        Generate disease visit report based on filters.
+
+        Filters include:
+        - selected doctors;
+        - selected diseases;
+        - date range;
+        - only completed appointments.
+
+        The result is a list of filtered appointments grouped by disease.
+
+        :return: Action dictionary opening appointment list view
+        :rtype: dict
+        """
         self.ensure_one()
         domain = [('state', '=', appointment_status.DONE[0])]
 

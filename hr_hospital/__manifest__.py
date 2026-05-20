@@ -39,6 +39,10 @@
     ],
 
     'demo': [
+        'demo/hr_hospital_users_doctor_demo.xml',
+        'demo/hr_hospital_users_patient_demo.xml',
+        'demo/hr_hospital_users_manager.xml',
+        'demo/hr_hospital_users_password_demo.xml',
         'demo/hr_hospital_doctor_demo.xml',
         'demo/hr_hospital_patient_demo.xml',
         'demo/hr_hospital_doctor_history_demo.xml',

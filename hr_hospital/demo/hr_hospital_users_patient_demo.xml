@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="user_patient_1" model="res.users">
+        <field name="name">Олена Коваль</field>
+        <field name="login">olena.koval</field>
+        <field name="email">olena.koval@example.com</field>
+        <field name="group_ids" eval="[Command.link(ref('base.group_user')), Command.link(ref('hr_hospital.group_patient'))]"/>
+    </record>
+
+    <record id="user_patient_2" model="res.users">
+        <field name="name">Ігор Мельник</field>
+        <field name="login">igor.melnyk</field>
+        <field name="email">igor.melnyk@example.com</field>
+        <field name="group_ids" eval="[Command.link(ref('base.group_user')), Command.link(ref('hr_hospital.group_patient'))]"/>
+    </record>
+
+    <record id="user_patient_3" model="res.users">
+        <field name="name">Марія Шевченко</field>
+        <field name="login">maria.shevchenko</field>
+        <field name="email">maria.shevchenko@example.com</field>
+        <field name="group_ids" eval="[Command.link(ref('base.group_user')), Command.link(ref('hr_hospital.group_patient'))]"/>
+    </record>
+
+    <record id="user_patient_4" model="res.users">
+        <field name="name">Андрій Бондар</field>
+        <field name="login">andrii.bondar</field>
+        <field name="email">andrii.bondar@example.com</field>
+        <field name="group_ids" eval="[Command.link(ref('base.group_user')), Command.link(ref('hr_hospital.group_patient'))]"/>
+    </record>
+
+    <record id="user_patient_5" model="res.users">
+        <field name="name">Наталія Романенко</field>
+        <field name="login">natalia.romanenko</field>
+        <field name="email">natalia.romanenko@example.com</field>
+        <field name="group_ids" eval="[Command.link(ref('base.group_user')), Command.link(ref('hr_hospital.group_patient'))]"/>
+    </record>
+
+</odoo>

@@ -9,6 +9,7 @@
         <field name="specialization">therapist</field>
         <field name="birth_date">1998-04-12</field>
         <field name="gender">male</field>
+        <field name="user_id" ref="user_doctor_1"/>
     </record>
 
     <record id="doctor_2" model="hr_hospital.doctor">
@@ -19,6 +20,7 @@
         <field name="category_id" ref="doctor_category_specialist"/>
         <field name="specialization">cardiologist</field>
         <field name="birth_date">1990-09-25</field>
+        <field name="user_id" ref="user_doctor_2"/>
     </record>
 
     <record id="doctor_3" model="hr_hospital.doctor">
@@ -29,6 +31,7 @@
         <field name="specialization">neurologist</field>
         <field name="birth_date">1988-02-18</field>
         <field name="gender">male</field>
+        <field name="user_id" ref="user_doctor_3"/>
     </record>
 
     <record id="doctor_4" model="hr_hospital.doctor">
@@ -40,6 +43,7 @@
         <field name="specialization">endocrinologist</field>
         <field name="birth_date">1982-11-03</field>
         <field name="gender">male</field>
+        <field name="user_id" ref="user_doctor_4"/>
     </record>
 
     <record id="doctor_5" model="hr_hospital.doctor">
@@ -50,6 +54,7 @@
         <field name="specialization">gastroenterologist</field>
         <field name="birth_date">1979-06-30</field>
         <field name="gender">male</field>
+        <field name="user_id" ref="user_doctor_5"/>
     </record>
 
      <record id="doctor_6" model="hr_hospital.doctor">
@@ -61,6 +66,7 @@
         <field name="specialization">gastroenterologist</field>
         <field name="birth_date">2000-07-10</field>
         <field name="gender">female</field>
+        <field name="user_id" ref="user_doctor_6"/>
     </record>
 
     <record id="doctor_7" model="hr_hospital.doctor">
@@ -72,6 +78,7 @@
         <field name="specialization">gastroenterologist</field>
         <field name="birth_date">2001-03-14</field>
         <field name="gender">male</field>
+        <field name="user_id" ref="user_doctor_7"/>
     </record>
 
     <record id="doctor_8" model="hr_hospital.doctor">
@@ -83,6 +90,7 @@
         <field name="specialization">endocrinologist</field>
         <field name="birth_date">2000-12-01</field>
         <field name="gender">female</field>
+        <field name="user_id" ref="user_doctor_8"/>
     </record>
 
     <record id="doctor_9" model="hr_hospital.doctor">
@@ -94,6 +102,7 @@
         <field name="specialization">endocrinologist</field>
         <field name="birth_date">2001-08-22</field>
         <field name="gender">male</field>
+        <field name="user_id" ref="user_doctor_9"/>
     </record>
 
 </odoo>

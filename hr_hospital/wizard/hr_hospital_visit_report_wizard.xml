@@ -8,24 +8,11 @@
             <form string="Patient Visit Report">
                 <group>
                     <group>
-                        <field name="doctor_ids">
-                            <list>
-                                <field name="name"/>
-                                <field name="is_intern"/>
-                            </list>
-                        </field>
-                        <field name="patient_ids">
-                            <list>
-                                <field name="name"/>
-                            </list>
-                        </field>
+                        <field name="doctor_ids" widget="many2many_tags"/>
+                        <field name="patient_ids" widget="many2many_tags"/>
                     </group>
                     <group>
-                        <field name="disease_ids">
-                            <list>
-                                <field name="display_name"/>
-                            </list>
-                        </field>
+                        <field name="disease_ids" widget="many2many_tags"/>
                         <field name="start_date"/>
                         <field name="end_date"/>
                         <field name="is_done_appointment" widget="boolean_toggle"/>

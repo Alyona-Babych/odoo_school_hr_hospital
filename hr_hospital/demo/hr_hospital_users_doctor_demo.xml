@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="user_doctor_1" model="res.users">
+        <field name="name">Олександр Коваль</field>
+        <field name="login">koval.doc</field>
+        <field name="email">koval.doc@example.com</field>
+        <field name="group_ids" eval="[(4, ref('base.group_user')), (4, ref('hr_hospital.group_doctor'))]"/>
+    </record>
+
+    <record id="user_doctor_2" model="res.users">
+        <field name="name">Ірина Бондаренко</field>
+        <field name="login">bondarenko.doc</field>
+        <field name="email">bondarenko.doc@example.com</field>
+        <field name="group_ids" eval="[(4, ref('base.group_user')), (4, ref('hr_hospital.group_doctor'))]"/>
+    </record>
+
+    <record id="user_doctor_3" model="res.users">
+        <field name="name">Тарас Мельник</field>
+        <field name="login">melnyk.doc</field>
+        <field name="email">melnyk.doc@example.com</field>
+        <field name="group_ids" eval="[(4, ref('base.group_user')), (4, ref('hr_hospital.group_doctor'))]"/>
+    </record>
+
+    <record id="user_doctor_4" model="res.users">
+        <field name="name">Світлана Романюк</field>
+        <field name="login">romanyuk.doc</field>
+        <field name="email">romanyuk.doc@example.com</field>
+        <field name="group_ids" eval="[(4, ref('base.group_user')), (4, ref('hr_hospital.group_doctor'))]"/>
+    </record>
+
+    <record id="user_doctor_5" model="res.users">
+        <field name="name">Віктор Шевчук</field>
+        <field name="login">shevchuk.doc</field>
+        <field name="email">shevchuk.doc@example.com</field>
+        <field name="group_ids" eval="[(4, ref('base.group_user')), (4, ref('hr_hospital.group_doctor'))]"/>
+    </record>
+
+    <record id="user_doctor_6" model="res.users">
+        <field name="name">Ольга Попенко</field>
+        <field name="login">popenko.intern</field>
+        <field name="email">popenko.doc@example.com</field>
+        <field name="group_ids" eval="[(4, ref('base.group_user')), (4, ref('hr_hospital.group_intern'))]"/>
+    </record>
+
+    <record id="user_doctor_7" model="res.users">
+        <field name="name">Андрій Литвин</field>
+        <field name="login">lytvyn.intern</field>
+        <field name="email">lytvyn.intern@example.com</field>
+        <field name="group_ids" eval="[(4, ref('base.group_user')), (4, ref('hr_hospital.group_intern'))]"/>
+    </record>
+
+    <record id="user_doctor_8" model="res.users">
+        <field name="name">Марія Кравець</field>
+        <field name="login">kravets.intern</field>
+        <field name="email">kravets.intern@example.com</field>
+        <field name="group_ids" eval="[(4, ref('base.group_user')), (4, ref('hr_hospital.group_intern'))]"/>
+    </record>
+
+    <record id="user_doctor_9" model="res.users">
+        <field name="name">Іван Сидоренко</field>
+        <field name="login">sydorenko.intern</field>
+        <field name="email">sydorenko.intern@example.com</field>
+        <field name="group_ids" eval="[(4, ref('base.group_user')), (4, ref('hr_hospital.group_intern'))]"/>
+    </record>
+
+</odoo>

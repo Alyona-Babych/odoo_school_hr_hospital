@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="user_manager_1" model="res.users">
+        <field name="name">Оксана Гриценко</field>
+        <field name="login">gritsenko.manager</field>
+        <field name="email">gritsenko.manager@example.com</field>
+        <field name="group_ids" eval="[(4, ref('base.group_user')), (4, ref('hr_hospital.group_manager'))]"/>
+    </record>
+
+    <record id="user_manager_2" model="res.users">
+        <field name="name">Дмитро Савченко</field>
+        <field name="login">savchenko.manager</field>
+        <field name="email">savchenko.manager@example.com</field>
+        <field name="group_ids" eval="[(4, ref('base.group_user')), (4, ref('hr_hospital.group_manager'))]"/>
+    </record>
+
+</odoo>

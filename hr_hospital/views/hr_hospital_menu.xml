@@ -24,7 +24,6 @@
               action="hr_hospital.hr_hospital_appointment_action_window"
               sequence="30"/>
 
-
     <menuitem id="hr_hospital_menu_dictionary"
               name="Dictionaries"
               parent="hr_hospital_main_menu"

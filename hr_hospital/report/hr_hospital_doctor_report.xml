@@ -94,7 +94,7 @@
                         <div class="text-muted">
                             <t t-out="o.category_id.name"/>
                             <span> • </span>
-                            <t t-out="o.specialization"/>
+                            <t t-out="o._fields['specialization'].convert_to_export(o.specialization, o)"/>
                         </div>
 
                         <t t-if="not o.appointment_ids" class="mt-3">
@@ -130,7 +130,7 @@
                                             <td><t t-out="a.patient_id.name"/></td>
                                             <td>
                                                 <span t-att-style="'color: %s;' % a._get_state_color()">
-                                                    <t t-out="a.state"/>
+                                                    <t t-out="a._fields['state'].convert_to_export(a.state, a)"/>
                                                 </span>
                                             </td>
                                         </tr>
@@ -158,7 +158,7 @@
                                     <t t-foreach="patients" t-as="p">
                                         <tr>
                                             <td><t t-out="p.name"/></td>
-                                            <td><t t-out="p.gender"/></td>
+                                            <td><t t-out="p._fields['gender'].convert_to_export(p.gender, p)"/></td>
                                             <td><t t-out="p.birth_date"/></td>
                                             <td><t t-out="p.phone"/></td>
                                         </tr>

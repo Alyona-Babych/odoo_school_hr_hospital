@@ -6,11 +6,31 @@ _logger = logging.getLogger(__name__)
 
 
 class HrHospitalPatient(models.Model):
+    """
+    Patient model.
+
+    This model stores all patients registered in the hospital system.
+
+    It provides:
+    - personal medical information (via medic.info abstraction);
+    - insurance data;
+    - doctor assignment history tracking;
+    - appointment management;
+    - current treating doctor computation.
+
+    The model acts as a central entity connecting doctors,
+    appointments, and medical history.
+    """
     _name = 'hr_hospital.patient'
     _description = 'Patients registered in the hospital system for medical care'
     _inherit = 'hr_hospital.medic.info'
 
     name = fields.Char(required=True)
+
+    user_id = fields.Many2one(
+        comodel_name='res.users',
+        string='Patient User'
+    )
 
     email = fields.Char()
 
@@ -66,6 +86,16 @@ class HrHospitalPatient(models.Model):
         'doctor_history_ids.active'
     )
     def _compute_current_doctor_history(self):
+        """
+        Compute current doctor and active doctor history record.
+
+        The method:
+        - filters active doctor history records;
+        - selects the latest assignment;
+        - assigns current doctor and history record.
+
+        :return: None
+        """
         for patient in self:
             active_histories = patient.doctor_history_ids.filtered(lambda h: h.active
                                                                              and not h.doctor_change_date
@@ -82,10 +112,23 @@ class HrHospitalPatient(models.Model):
 
     @api.depends('appointment_ids.doctor_id')
     def _compute_doctors(self):
+        """
+        Compute list of all doctors who treated the patient.
+
+        Derived from patient appointment records.
+
+        :return: None
+        """
         for patient in self:
             patient.doctor_ids = patient.appointment_ids.mapped('doctor_id')
 
     def action_open_appointment_list(self):
+        """
+        Open list view of patient appointments.
+
+        :return: Action dictionary for list view
+        :rtype: dict
+        """
         return {
             'type': 'ir.actions.act_window',
             'name': 'Patient Appointments',
@@ -95,6 +138,16 @@ class HrHospitalPatient(models.Model):
         }
 
     def action_create_appointment(self):
+        """
+        Open appointment creation form for patient.
+
+        Pre-fills:
+        - patient reference;
+        - current datetime as default scheduled time.
+
+        :return: Action dictionary for form view
+        :rtype: dict
+        """
         return {
             'type': 'ir.actions.act_window',
             'name': 'Create Appointment',

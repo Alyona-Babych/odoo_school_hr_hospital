@@ -5,54 +5,54 @@
 
     <record id="disease_category_a00_b99" model="hr_hospital.disease.category">
         <field name="icd_code">A00-B99</field>
-        <field name="name">ДЕЯКІ ІНФЕКЦІЙНІ ТА ПАРАЗИТАРНІ ХВОРОБИ</field>
+        <field name="name">Certain Infectious and Parasitic Diseases</field>
     </record>
 
     <record id="disease_category_e00_e89" model="hr_hospital.disease.category">
         <field name="icd_code">E00-E89</field>
-        <field name="name">ЕНДОКРИНІ ХВОРОБИ, РОЗЛАДИ ХАРЧУВАННЯ ТА ПОРУШЕННЯ ОБМІНУ РЕЧОВИН</field>
+        <field name="name">Endocrine, Nutritional and Metabolic Diseases</field>
     </record>
 
     <record id="disease_category_i00_i99" model="hr_hospital.disease.category">
         <field name="icd_code">I00-I99</field>
-        <field name="name">ХВОРОБИ СИСТЕМИ КРОВООБІГУ</field>
+        <field name="name">Diseases of the Circulatory System</field>
     </record>
 
     <!-- SUBCATEGORIES -->
 
     <record id="disease_category_a00_a09" model="hr_hospital.disease.category">
         <field name="icd_code">A00-A09</field>
-        <field name="name">Кишкові інфекційні хвороби</field>
+        <field name="name">Intestinal Infectious Diseases</field>
         <field name="parent_id" ref="disease_category_a00_b99"/>
     </record>
 
     <record id="disease_category_a80_a89" model="hr_hospital.disease.category">
         <field name="icd_code">A80-A89</field>
-        <field name="name">Вірусні інфекційні хвороби центральної нервової системи</field>
+        <field name="name">Viral Infections of the Central Nervous System</field>
         <field name="parent_id" ref="disease_category_a00_b99"/>
     </record>
 
     <record id="disease_category_e70_e89" model="hr_hospital.disease.category">
         <field name="icd_code">E70-E89</field>
-        <field name="name">Порушення обміну речовин</field>
+        <field name="name">Metabolic Disorders</field>
         <field name="parent_id" ref="disease_category_e00_e89"/>
     </record>
 
     <record id="disease_category_i10_i15" model="hr_hospital.disease.category">
         <field name="icd_code">I10-I15</field>
-        <field name="name">Гіпертонічна хвороба</field>
+        <field name="name">Hypertensive Diseases</field>
         <field name="parent_id" ref="disease_category_i00_i99"/>
     </record>
 
     <record id="disease_category_i20_i25" model="hr_hospital.disease.category">
         <field name="icd_code">I20-I25</field>
-        <field name="name">Ішемічна хвороба серця</field>
+        <field name="name">Ischemic Heart Diseases</field>
         <field name="parent_id" ref="disease_category_i00_i99"/>
     </record>
 
     <record id="disease_category_i70_i79" model="hr_hospital.disease.category">
         <field name="icd_code">I70-I79</field>
-        <field name="name">Хвороби артерій, артеріол та капілярів</field>
+        <field name="name">Diseases of Arteries, Arterioles and Capillaries</field>
         <field name="parent_id" ref="disease_category_i00_i99"/>
     </record>
 

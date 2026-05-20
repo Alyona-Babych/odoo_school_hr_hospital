@@ -10,6 +10,23 @@ _logger = logging.getLogger(__name__)
 
 
 class HrHospitalMedicInfo(models.AbstractModel):
+    """
+    Abstract medical information model.
+
+    This abstract model provides reusable medical fields
+    that can be inherited by patient, doctor, and other
+    medical-related models.
+
+    It contains basic personal medical data such as:
+    - blood group;
+    - Rh factor;
+    - gender;
+    - date of birth;
+    - computed age.
+
+    This model is not stored independently and is intended
+    only for inheritance.
+    """
     _name = 'hr_hospital.medic.info'
     _description = """Abstract model for storing basic medical information such
     as blood group, gender, date of birth, and computed age."""
@@ -44,6 +61,14 @@ class HrHospitalMedicInfo(models.AbstractModel):
 
     @api.depends('birth_date')
     def _compute_age(self):
+        """
+        Compute age in full years based on birth date.
+
+        Age is calculated dynamically using current system date
+        and stored birth date.
+
+        :return: None
+        """
         for medic_info in self:
             if medic_info.birth_date:
                 today = fields.Date.today()
