@@ -21,7 +21,7 @@ msgid "HR Hospital"
 msgstr "Лікарня"
 
 #. module: base
-#: model:ir.module.module,shortdesc:base.module_hr_hospital
+#: model:ir.module.module,summary:base.module_hr_hospital
 msgid "Hospital management system for doctors, patients, diseases, and visit tracking."
 msgstr "Система керування лікарнею для лікарів, пацієнтів, захворювань та обліку візитів."
 
